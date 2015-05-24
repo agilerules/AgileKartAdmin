@@ -1,0 +1,36 @@
+<header ng-switch on="$location.path().indexOf('/AkCategoryOptions/new') > -1">
+    <h3 ng-switch-when="true">Create a new AkCategoryOptions</h3>
+    <h3 ng-switch-when="false">View or edit AkCategoryOptions</h3>
+</header>
+<form id="AkCategoryOptionsForm" name="AkCategoryOptionsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': AkCategoryOptionsForm.categoryId.$invalid}">
+        <label for="categoryId" class="col-sm-2 control-label">Category Id</label>
+        <div id="categoryIdControls" class="col-sm-10">
+            <input id="categoryId" name="categoryId" type="number" required class="form-control" ng-model="akCategoryOptions.categoryId" placeholder="Enter the AkCategoryOptions Category Id"></input>
+            <span class="help-block error" ng-show="AkCategoryOptionsForm.categoryId.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkCategoryOptionsForm.categoryId.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkCategoryOptionsForm.optionGroupId.$invalid}">
+        <label for="optionGroupId" class="col-sm-2 control-label">Option Group Id</label>
+        <div id="optionGroupIdControls" class="col-sm-10">
+            <input id="optionGroupId" name="optionGroupId" type="number" required class="form-control" ng-model="akCategoryOptions.optionGroupId" placeholder="Enter the AkCategoryOptions Option Group Id"></input>
+            <span class="help-block error" ng-show="AkCategoryOptionsForm.optionGroupId.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkCategoryOptionsForm.optionGroupId.$error.number">not a number</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveAkCategoryOptions" name="saveAkCategoryOptions" class="btn btn-primary" ng-disabled="isClean() || AkCategoryOptionsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteAkCategoryOptions" name="deleteAkCategoryOptions" class="btn btn-danger" ng-show="akCategoryOptions.categoryOptionId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

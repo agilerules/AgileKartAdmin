@@ -1,0 +1,212 @@
+<div class="form-horizontal">
+    <h3>Create a new AkProducts</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/AkProducts/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for AkProducts</h3>
+    <form id="AkProductsSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="akProductCategories" class="col-sm-2 control-label">Ak Product Categories</label>
+        <div class="col-sm-10">
+            <select id="akProductCategories" name="akProductCategories" class="form-control" ng-model="search.akProductCategories" ng-options="a as a.categoryId for a in akProductCategoriesList">
+                <option value="">Choose a Ak Product Categories</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productSku" class="col-sm-2 control-label">Product Sku</label>
+        <div class="col-sm-10">
+            <input id="productSku" name="productSku" class="form-control" type="text" ng-model="search.productSku" placeholder="Enter the AkProducts Product Sku"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productName" class="col-sm-2 control-label">Product Name</label>
+        <div class="col-sm-10">
+            <input id="productName" name="productName" class="form-control" type="text" ng-model="search.productName" placeholder="Enter the AkProducts Product Name"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productPrice" class="col-sm-2 control-label">Product Price</label>
+        <div class="col-sm-10">
+            <input id="productPrice" name="productPrice" class="form-control" type="text" ng-model="search.productPrice" placeholder="Enter the AkProducts Product Price"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productWeight" class="col-sm-2 control-label">Product Weight</label>
+        <div class="col-sm-10">
+            <input id="productWeight" name="productWeight" class="form-control" type="text" ng-model="search.productWeight" placeholder="Enter the AkProducts Product Weight"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productCartDesc" class="col-sm-2 control-label">Product Cart Desc</label>
+        <div class="col-sm-10">
+            <input id="productCartDesc" name="productCartDesc" class="form-control" type="text" ng-model="search.productCartDesc" placeholder="Enter the AkProducts Product Cart Desc"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productShortDesc" class="col-sm-2 control-label">Product Short Desc</label>
+        <div class="col-sm-10">
+            <input id="productShortDesc" name="productShortDesc" class="form-control" type="text" ng-model="search.productShortDesc" placeholder="Enter the AkProducts Product Short Desc"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productLongDesc" class="col-sm-2 control-label">Product Long Desc</label>
+        <div class="col-sm-10">
+            <input id="productLongDesc" name="productLongDesc" class="form-control" type="text" ng-model="search.productLongDesc" placeholder="Enter the AkProducts Product Long Desc"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productThumb" class="col-sm-2 control-label">Product Thumb</label>
+        <div class="col-sm-10">
+            <input id="productThumb" name="productThumb" class="form-control" type="text" ng-model="search.productThumb" placeholder="Enter the AkProducts Product Thumb"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productImage" class="col-sm-2 control-label">Product Image</label>
+        <div class="col-sm-10">
+            <input id="productImage" name="productImage" class="form-control" type="text" ng-model="search.productImage" placeholder="Enter the AkProducts Product Image"></input>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="productStock" class="col-sm-2 control-label">Product Stock</label>
+        <div class="col-sm-10">
+            <input id="productStock" name="productStock" class="form-control" type="text" ng-model="search.productStock" placeholder="Enter the AkProducts Product Stock"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productOnlineOnly" class="col-sm-2 control-label">Product Online Only</label>
+        <div class="col-sm-10">
+            <select id="productOnlineOnly" name="productOnlineOnly" class="form-control" ng-model="search.productOnlineOnly" ng-options="p as p for p in productOnlineOnlyList">
+                <option value="">Choose a Product Online Only</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productUnlimited" class="col-sm-2 control-label">Product Unlimited</label>
+        <div class="col-sm-10">
+            <select id="productUnlimited" name="productUnlimited" class="form-control" ng-model="search.productUnlimited" ng-options="p as p for p in productUnlimitedList">
+                <option value="">Choose a Product Unlimited</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productLocation" class="col-sm-2 control-label">Product Location</label>
+        <div class="col-sm-10">
+            <input id="productLocation" name="productLocation" class="form-control" type="text" ng-model="search.productLocation" placeholder="Enter the AkProducts Product Location"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productDiscountPercentage" class="col-sm-2 control-label">Product Discount Percentage</label>
+        <div class="col-sm-10">
+            <input id="productDiscountPercentage" name="productDiscountPercentage" class="form-control" type="text" ng-model="search.productDiscountPercentage" placeholder="Enter the AkProducts Product Discount Percentage"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productHitCount" class="col-sm-2 control-label">Product Hit Count</label>
+        <div class="col-sm-10">
+            <input id="productHitCount" name="productHitCount" class="form-control" type="text" ng-model="search.productHitCount" placeholder="Enter the AkProducts Product Hit Count"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="productSoldCount" class="col-sm-2 control-label">Product Sold Count</label>
+        <div class="col-sm-10">
+            <input id="productSoldCount" name="productSoldCount" class="form-control" type="text" ng-model="search.productSoldCount" placeholder="Enter the AkProducts Product Sold Count"></input>
+        </div>
+    </div>
+
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Ak Product Categories</th>
+                    <th>Product Sku</th>
+                    <th>Product Name</th>
+                    <th>Product Price</th>
+                    <th>Product Weight</th>
+                    <th>Product Cart Desc</th>
+                    <th>Product Short Desc</th>
+                    <th>Product Long Desc</th>
+                    <th>Product Thumb</th>
+                    <th>Product Image</th>
+                    <th>Product Update Date</th>
+                    <th>Product Stock</th>
+                    <th>Product Online Only</th>
+                    <th>Product Unlimited</th>
+                    <th>Product Location</th>
+                    <th>Product Discount Percentage</th>
+                    <th>Product Hit Count</th>
+                    <th>Product Sold Count</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.akProductCategories.categoryId}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productSku}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productName}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productPrice}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productWeight}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productCartDesc}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productShortDesc}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productLongDesc}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productThumb}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productImage}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productUpdateDate| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productStock}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productOnlineOnly}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productUnlimited}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productLocation}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productDiscountPercentage}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productHitCount}}</a></td>
+                    <td><a href="#/AkProducts/edit/{{result.productId}}">{{result.productSoldCount}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

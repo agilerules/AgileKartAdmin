@@ -1,0 +1,157 @@
+<header ng-switch on="$location.path().indexOf('/AkUsers/new') > -1">
+    <h3 ng-switch-when="true">Create a new AkUsers</h3>
+    <h3 ng-switch-when="false">View or edit AkUsers</h3>
+</header>
+<form id="AkUsersForm" name="AkUsersForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userEmail.$invalid}">
+        <label for="userEmail" class="col-sm-2 control-label">User Email</label>
+        <div id="userEmailControls" class="col-sm-10">
+            <input id="userEmail" name="userEmail" type="text" ng-maxlength="500" class="form-control" ng-model="akUsers.userEmail" placeholder="Enter the AkUsers User Email"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userEmail.$error.maxlength">maximum length is 500</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userPassword.$invalid}">
+        <label for="userPassword" class="col-sm-2 control-label">User Password</label>
+        <div id="userPasswordControls" class="col-sm-10">
+            <input id="userPassword" name="userPassword" type="text" ng-maxlength="500" class="form-control" ng-model="akUsers.userPassword" placeholder="Enter the AkUsers User Password"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userPassword.$error.maxlength">maximum length is 500</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userFirstName.$invalid}">
+        <label for="userFirstName" class="col-sm-2 control-label">User First Name</label>
+        <div id="userFirstNameControls" class="col-sm-10">
+            <input id="userFirstName" name="userFirstName" type="text" ng-maxlength="50" class="form-control" ng-model="akUsers.userFirstName" placeholder="Enter the AkUsers User First Name"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userFirstName.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userLastName.$invalid}">
+        <label for="userLastName" class="col-sm-2 control-label">User Last Name</label>
+        <div id="userLastNameControls" class="col-sm-10">
+            <input id="userLastName" name="userLastName" type="text" ng-maxlength="50" class="form-control" ng-model="akUsers.userLastName" placeholder="Enter the AkUsers User Last Name"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userLastName.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userCity.$invalid}">
+        <label for="userCity" class="col-sm-2 control-label">User City</label>
+        <div id="userCityControls" class="col-sm-10">
+            <input id="userCity" name="userCity" type="text" ng-maxlength="90" class="form-control" ng-model="akUsers.userCity" placeholder="Enter the AkUsers User City"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userCity.$error.maxlength">maximum length is 90</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userState.$invalid}">
+        <label for="userState" class="col-sm-2 control-label">User State</label>
+        <div id="userStateControls" class="col-sm-10">
+            <input id="userState" name="userState" type="text" ng-maxlength="20" class="form-control" ng-model="akUsers.userState" placeholder="Enter the AkUsers User State"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userState.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userZip.$invalid}">
+        <label for="userZip" class="col-sm-2 control-label">User Zip</label>
+        <div id="userZipControls" class="col-sm-10">
+            <input id="userZip" name="userZip" type="text" ng-maxlength="12" class="form-control" ng-model="akUsers.userZip" placeholder="Enter the AkUsers User Zip"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userZip.$error.maxlength">maximum length is 12</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userEmailVerified.$invalid}">
+        <label for="userEmailVerified" class="col-sm-2 control-label">User Email Verified</label>
+        <div id="userEmailVerifiedControls" class="col-sm-10">
+        <select id="userEmailVerified" name="userEmailVerified" class="form-control" ng-model="akUsers.userEmailVerified" ng-options="u for u in userEmailVerifiedList"  >
+            <option value="">Choose a User Email Verified</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userRegistrationDate.$invalid}">
+        <label for="userRegistrationDate" class="col-sm-2 control-label">User Registration Date</label>
+        <div id="userRegistrationDateControls" class="col-sm-10">
+            <datetime id="userRegistrationDate" name="userRegistrationDate" ng-model="akUsers.userRegistrationDate" placeholder="Enter the AkUsers User Registration Date"></datetime>
+            <span class="help-block error" ng-show="AkUsersForm.userRegistrationDate.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="AkUsersForm.userRegistrationDate.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userVerificationCode.$invalid}">
+        <label for="userVerificationCode" class="col-sm-2 control-label">User Verification Code</label>
+        <div id="userVerificationCodeControls" class="col-sm-10">
+            <input id="userVerificationCode" name="userVerificationCode" type="text" ng-maxlength="20" class="form-control" ng-model="akUsers.userVerificationCode" placeholder="Enter the AkUsers User Verification Code"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userVerificationCode.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userIp.$invalid}">
+        <label for="userIp" class="col-sm-2 control-label">User Ip</label>
+        <div id="userIpControls" class="col-sm-10">
+            <input id="userIp" name="userIp" type="text" ng-maxlength="50" class="form-control" ng-model="akUsers.userIp" placeholder="Enter the AkUsers User Ip"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userIp.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userPhone.$invalid}">
+        <label for="userPhone" class="col-sm-2 control-label">User Phone</label>
+        <div id="userPhoneControls" class="col-sm-10">
+            <input id="userPhone" name="userPhone" type="text" ng-maxlength="20" class="form-control" ng-model="akUsers.userPhone" placeholder="Enter the AkUsers User Phone"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userPhone.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userFax.$invalid}">
+        <label for="userFax" class="col-sm-2 control-label">User Fax</label>
+        <div id="userFaxControls" class="col-sm-10">
+            <input id="userFax" name="userFax" type="text" ng-maxlength="20" class="form-control" ng-model="akUsers.userFax" placeholder="Enter the AkUsers User Fax"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userFax.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userCountry.$invalid}">
+        <label for="userCountry" class="col-sm-2 control-label">User Country</label>
+        <div id="userCountryControls" class="col-sm-10">
+            <input id="userCountry" name="userCountry" type="text" ng-maxlength="20" class="form-control" ng-model="akUsers.userCountry" placeholder="Enter the AkUsers User Country"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userCountry.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userAddress.$invalid}">
+        <label for="userAddress" class="col-sm-2 control-label">User Address</label>
+        <div id="userAddressControls" class="col-sm-10">
+            <input id="userAddress" name="userAddress" type="text" ng-maxlength="100" class="form-control" ng-model="akUsers.userAddress" placeholder="Enter the AkUsers User Address"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userAddress.$error.maxlength">maximum length is 100</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.userAddress2.$invalid}">
+        <label for="userAddress2" class="col-sm-2 control-label">User Address 2</label>
+        <div id="userAddress2Controls" class="col-sm-10">
+            <input id="userAddress2" name="userAddress2" type="text" ng-maxlength="50" class="form-control" ng-model="akUsers.userAddress2" placeholder="Enter the AkUsers User Address 2"></input>
+            <span class="help-block error" ng-show="AkUsersForm.userAddress2.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkUsersForm.akOrderses.$invalid}">
+        <label for="akOrderses" class="col-sm-2 control-label">Ak Orderses</label>
+        <div id="akOrdersesControls" class="col-sm-10">
+            <select id="akOrderses" name="akOrderses" multiple class="form-control" ng-model="akOrdersesSelection" ng-options="a.text for a in akOrdersesSelectionList">
+                <option value="">Choose a Ak Orderses</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveAkUsers" name="saveAkUsers" class="btn btn-primary" ng-disabled="isClean() || AkUsersForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteAkUsers" name="deleteAkUsers" class="btn btn-danger" ng-show="akUsers.userId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

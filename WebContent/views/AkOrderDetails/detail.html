@@ -1,0 +1,72 @@
+<header ng-switch on="$location.path().indexOf('/AkOrderDetails/new') > -1">
+    <h3 ng-switch-when="true">Create a new AkOrderDetails</h3>
+    <h3 ng-switch-when="false">View or edit AkOrderDetails</h3>
+</header>
+<form id="AkOrderDetailsForm" name="AkOrderDetailsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.akOrders.$invalid}">
+        <label for="akOrders" class="col-sm-2 control-label">Ak Orders</label>
+        <div id="akOrdersControls" class="col-sm-10">
+        <select id="akOrders" name="akOrders" class="form-control" ng-model="akOrdersSelection" ng-options="a.text for a in akOrdersSelectionList"  >
+            <option value="">Choose a Ak Orders</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.akProducts.$invalid}">
+        <label for="akProducts" class="col-sm-2 control-label">Ak Products</label>
+        <div id="akProductsControls" class="col-sm-10">
+        <select id="akProducts" name="akProducts" class="form-control" ng-model="akProductsSelection" ng-options="a.text for a in akProductsSelectionList"  >
+            <option value="">Choose a Ak Products</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.detailName.$invalid}">
+        <label for="detailName" class="col-sm-2 control-label">Detail Name</label>
+        <div id="detailNameControls" class="col-sm-10">
+            <input id="detailName" name="detailName" type="text" required ng-maxlength="250" class="form-control" ng-model="akOrderDetails.detailName" placeholder="Enter the AkOrderDetails Detail Name"></input>
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailName.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailName.$error.maxlength">maximum length is 250</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.detailPrice.$invalid}">
+        <label for="detailPrice" class="col-sm-2 control-label">Detail Price</label>
+        <div id="detailPriceControls" class="col-sm-10">
+            <input id="detailPrice" name="detailPrice" type="number" required class="form-control" ng-model="akOrderDetails.detailPrice" placeholder="Enter the AkOrderDetails Detail Price"></input>
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailPrice.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailPrice.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.detailSku.$invalid}">
+        <label for="detailSku" class="col-sm-2 control-label">Detail Sku</label>
+        <div id="detailSkuControls" class="col-sm-10">
+            <input id="detailSku" name="detailSku" type="text" required ng-maxlength="50" class="form-control" ng-model="akOrderDetails.detailSku" placeholder="Enter the AkOrderDetails Detail Sku"></input>
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailSku.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailSku.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrderDetailsForm.detailQuantity.$invalid}">
+        <label for="detailQuantity" class="col-sm-2 control-label">Detail Quantity</label>
+        <div id="detailQuantityControls" class="col-sm-10">
+            <input id="detailQuantity" name="detailQuantity" type="number" required class="form-control" ng-model="akOrderDetails.detailQuantity" placeholder="Enter the AkOrderDetails Detail Quantity"></input>
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailQuantity.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrderDetailsForm.detailQuantity.$error.number">not a number</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveAkOrderDetails" name="saveAkOrderDetails" class="btn btn-primary" ng-disabled="isClean() || AkOrderDetailsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteAkOrderDetails" name="deleteAkOrderDetails" class="btn btn-danger" ng-show="akOrderDetails.detailId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

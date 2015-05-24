@@ -1,0 +1,53 @@
+<header ng-switch on="$location.path().indexOf('/AkProductOptions/new') > -1">
+    <h3 ng-switch-when="true">Create a new AkProductOptions</h3>
+    <h3 ng-switch-when="false">View or edit AkProductOptions</h3>
+</header>
+<form id="AkProductOptionsForm" name="AkProductOptionsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': AkProductOptionsForm.akOptionGroups.$invalid}">
+        <label for="akOptionGroups" class="col-sm-2 control-label">Ak Option Groups</label>
+        <div id="akOptionGroupsControls" class="col-sm-10">
+        <select id="akOptionGroups" name="akOptionGroups" class="form-control" ng-model="akOptionGroupsSelection" ng-options="a.text for a in akOptionGroupsSelectionList"  >
+            <option value="">Choose a Ak Option Groups</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkProductOptionsForm.akOptions.$invalid}">
+        <label for="akOptions" class="col-sm-2 control-label">Ak Options</label>
+        <div id="akOptionsControls" class="col-sm-10">
+        <select id="akOptions" name="akOptions" class="form-control" ng-model="akOptionsSelection" ng-options="a.text for a in akOptionsSelectionList"  >
+            <option value="">Choose a Ak Options</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkProductOptionsForm.akProducts.$invalid}">
+        <label for="akProducts" class="col-sm-2 control-label">Ak Products</label>
+        <div id="akProductsControls" class="col-sm-10">
+        <select id="akProducts" name="akProducts" class="form-control" ng-model="akProductsSelection" ng-options="a.text for a in akProductsSelectionList"  >
+            <option value="">Choose a Ak Products</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkProductOptionsForm.optionPriceIncrement.$invalid}">
+        <label for="optionPriceIncrement" class="col-sm-2 control-label">Option Price Increment</label>
+        <div id="optionPriceIncrementControls" class="col-sm-10">
+            <input id="optionPriceIncrement" name="optionPriceIncrement" type="number" class="form-control" ng-model="akProductOptions.optionPriceIncrement" placeholder="Enter the AkProductOptions Option Price Increment"></input>
+            <span class="help-block error" ng-show="AkProductOptionsForm.optionPriceIncrement.$error.number">not a number</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveAkProductOptions" name="saveAkProductOptions" class="btn btn-primary" ng-disabled="isClean() || AkProductOptionsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteAkProductOptions" name="deleteAkProductOptions" class="btn btn-danger" ng-show="akProductOptions.productOptionId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

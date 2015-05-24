@@ -1,0 +1,90 @@
+<div class="form-horizontal">
+    <h3>Create a new AkProductOptions</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/AkProductOptions/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for AkProductOptions</h3>
+    <form id="AkProductOptionsSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="akOptionGroups" class="col-sm-2 control-label">Ak Option Groups</label>
+        <div class="col-sm-10">
+            <select id="akOptionGroups" name="akOptionGroups" class="form-control" ng-model="search.akOptionGroups" ng-options="a as a.optionGroupId for a in akOptionGroupsList">
+                <option value="">Choose a Ak Option Groups</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="akOptions" class="col-sm-2 control-label">Ak Options</label>
+        <div class="col-sm-10">
+            <select id="akOptions" name="akOptions" class="form-control" ng-model="search.akOptions" ng-options="a as a.optionId for a in akOptionsList">
+                <option value="">Choose a Ak Options</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="akProducts" class="col-sm-2 control-label">Ak Products</label>
+        <div class="col-sm-10">
+            <select id="akProducts" name="akProducts" class="form-control" ng-model="search.akProducts" ng-options="a as a.productId for a in akProductsList">
+                <option value="">Choose a Ak Products</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="optionPriceIncrement" class="col-sm-2 control-label">Option Price Increment</label>
+        <div class="col-sm-10">
+            <input id="optionPriceIncrement" name="optionPriceIncrement" class="form-control" type="text" ng-model="search.optionPriceIncrement" placeholder="Enter the AkProductOptions Option Price Increment"></input>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Ak Option Groups</th>
+                    <th>Ak Options</th>
+                    <th>Ak Products</th>
+                    <th>Option Price Increment</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/AkProductOptions/edit/{{result.productOptionId}}">{{result.akOptionGroups.optionGroupId}}</a></td>
+                        <td><a href="#/AkProductOptions/edit/{{result.productOptionId}}">{{result.akOptions.optionId}}</a></td>
+                        <td><a href="#/AkProductOptions/edit/{{result.productOptionId}}">{{result.akProducts.productId}}</a></td>
+                    <td><a href="#/AkProductOptions/edit/{{result.productOptionId}}">{{result.optionPriceIncrement}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

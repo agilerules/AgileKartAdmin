@@ -1,0 +1,198 @@
+<div class="form-horizontal">
+    <h3>Create a new AkOrders</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/AkOrders/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for AkOrders</h3>
+    <form id="AkOrdersSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="akUsers" class="col-sm-2 control-label">Ak Users</label>
+        <div class="col-sm-10">
+            <select id="akUsers" name="akUsers" class="form-control" ng-model="search.akUsers" ng-options="a as a.userId for a in akUsersList">
+                <option value="">Choose a Ak Users</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderAmount" class="col-sm-2 control-label">Order Amount</label>
+        <div class="col-sm-10">
+            <input id="orderAmount" name="orderAmount" class="form-control" type="text" ng-model="search.orderAmount" placeholder="Enter the AkOrders Order Amount"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderShipName" class="col-sm-2 control-label">Order Ship Name</label>
+        <div class="col-sm-10">
+            <input id="orderShipName" name="orderShipName" class="form-control" type="text" ng-model="search.orderShipName" placeholder="Enter the AkOrders Order Ship Name"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderShipAddress" class="col-sm-2 control-label">Order Ship Address</label>
+        <div class="col-sm-10">
+            <input id="orderShipAddress" name="orderShipAddress" class="form-control" type="text" ng-model="search.orderShipAddress" placeholder="Enter the AkOrders Order Ship Address"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderShipAddress2" class="col-sm-2 control-label">Order Ship Address 2</label>
+        <div class="col-sm-10">
+            <input id="orderShipAddress2" name="orderShipAddress2" class="form-control" type="text" ng-model="search.orderShipAddress2" placeholder="Enter the AkOrders Order Ship Address 2"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderCity" class="col-sm-2 control-label">Order City</label>
+        <div class="col-sm-10">
+            <input id="orderCity" name="orderCity" class="form-control" type="text" ng-model="search.orderCity" placeholder="Enter the AkOrders Order City"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderState" class="col-sm-2 control-label">Order State</label>
+        <div class="col-sm-10">
+            <input id="orderState" name="orderState" class="form-control" type="text" ng-model="search.orderState" placeholder="Enter the AkOrders Order State"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderZip" class="col-sm-2 control-label">Order Zip</label>
+        <div class="col-sm-10">
+            <input id="orderZip" name="orderZip" class="form-control" type="text" ng-model="search.orderZip" placeholder="Enter the AkOrders Order Zip"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderCountry" class="col-sm-2 control-label">Order Country</label>
+        <div class="col-sm-10">
+            <input id="orderCountry" name="orderCountry" class="form-control" type="text" ng-model="search.orderCountry" placeholder="Enter the AkOrders Order Country"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderPhone" class="col-sm-2 control-label">Order Phone</label>
+        <div class="col-sm-10">
+            <input id="orderPhone" name="orderPhone" class="form-control" type="text" ng-model="search.orderPhone" placeholder="Enter the AkOrders Order Phone"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderFax" class="col-sm-2 control-label">Order Fax</label>
+        <div class="col-sm-10">
+            <input id="orderFax" name="orderFax" class="form-control" type="text" ng-model="search.orderFax" placeholder="Enter the AkOrders Order Fax"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderShipping" class="col-sm-2 control-label">Order Shipping</label>
+        <div class="col-sm-10">
+            <input id="orderShipping" name="orderShipping" class="form-control" type="text" ng-model="search.orderShipping" placeholder="Enter the AkOrders Order Shipping"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderTax" class="col-sm-2 control-label">Order Tax</label>
+        <div class="col-sm-10">
+            <input id="orderTax" name="orderTax" class="form-control" type="text" ng-model="search.orderTax" placeholder="Enter the AkOrders Order Tax"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orderEmail" class="col-sm-2 control-label">Order Email</label>
+        <div class="col-sm-10">
+            <input id="orderEmail" name="orderEmail" class="form-control" type="text" ng-model="search.orderEmail" placeholder="Enter the AkOrders Order Email"></input>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="orderTrackingNo" class="col-sm-2 control-label">Order Tracking No</label>
+        <div class="col-sm-10">
+            <input id="orderTrackingNo" name="orderTrackingNo" class="form-control" type="text" ng-model="search.orderTrackingNo" placeholder="Enter the AkOrders Order Tracking No"></input>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="orderShipped" class="col-sm-2 control-label">Order Shipped</label>
+        <div class="col-sm-10">
+            <input id="orderShipped" name="orderShipped" class="form-control" type="text" ng-model="search.orderShipped" placeholder="Enter the AkOrders Order Shipped"></input>
+        </div>
+    </div>
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Ak Users</th>
+                    <th>Order Amount</th>
+                    <th>Order Ship Name</th>
+                    <th>Order Ship Address</th>
+                    <th>Order Ship Address 2</th>
+                    <th>Order City</th>
+                    <th>Order State</th>
+                    <th>Order Zip</th>
+                    <th>Order Country</th>
+                    <th>Order Phone</th>
+                    <th>Order Fax</th>
+                    <th>Order Shipping</th>
+                    <th>Order Tax</th>
+                    <th>Order Email</th>
+                    <th>Order Date</th>
+                    <th>Order Tracking No</th>
+                    <th>Order Shipped</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.akUsers.userId}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderAmount}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderShipName}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderShipAddress}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderShipAddress2}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderCity}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderState}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderZip}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderCountry}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderPhone}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderFax}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderShipping}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderTax}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderEmail}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderDate| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderTrackingNo}}</a></td>
+                    <td><a href="#/AkOrders/edit/{{result.orderId}}">{{result.orderShipped}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

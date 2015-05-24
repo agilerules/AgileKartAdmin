@@ -1,0 +1,36 @@
+<header ng-switch on="$location.path().indexOf('/AkProductCategories/new') > -1">
+    <h3 ng-switch-when="true">Create a new AkProductCategories</h3>
+    <h3 ng-switch-when="false">View or edit AkProductCategories</h3>
+</header>
+<form id="AkProductCategoriesForm" name="AkProductCategoriesForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': AkProductCategoriesForm.categoryName.$invalid}">
+        <label for="categoryName" class="col-sm-2 control-label">Category Name</label>
+        <div id="categoryNameControls" class="col-sm-10">
+            <input id="categoryName" name="categoryName" type="text" required ng-maxlength="50" class="form-control" ng-model="akProductCategories.categoryName" placeholder="Enter the AkProductCategories Category Name"></input>
+            <span class="help-block error" ng-show="AkProductCategoriesForm.categoryName.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkProductCategoriesForm.categoryName.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkProductCategoriesForm.akProductses.$invalid}">
+        <label for="akProductses" class="col-sm-2 control-label">Ak Productses</label>
+        <div id="akProductsesControls" class="col-sm-10">
+            <select id="akProductses" name="akProductses" multiple class="form-control" ng-model="akProductsesSelection" ng-options="a.text for a in akProductsesSelectionList">
+                <option value="">Choose a Ak Productses</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveAkProductCategories" name="saveAkProductCategories" class="btn btn-primary" ng-disabled="isClean() || AkProductCategoriesForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteAkProductCategories" name="deleteAkProductCategories" class="btn btn-danger" ng-show="akProductCategories.categoryId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

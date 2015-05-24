@@ -1,0 +1,189 @@
+<div class="form-horizontal">
+    <h3>Create a new AkUsers</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/AkUsers/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for AkUsers</h3>
+    <form id="AkUsersSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="userEmail" class="col-sm-2 control-label">User Email</label>
+        <div class="col-sm-10">
+            <input id="userEmail" name="userEmail" class="form-control" type="text" ng-model="search.userEmail" placeholder="Enter the AkUsers User Email"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userPassword" class="col-sm-2 control-label">User Password</label>
+        <div class="col-sm-10">
+            <input id="userPassword" name="userPassword" class="form-control" type="text" ng-model="search.userPassword" placeholder="Enter the AkUsers User Password"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userFirstName" class="col-sm-2 control-label">User First Name</label>
+        <div class="col-sm-10">
+            <input id="userFirstName" name="userFirstName" class="form-control" type="text" ng-model="search.userFirstName" placeholder="Enter the AkUsers User First Name"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userLastName" class="col-sm-2 control-label">User Last Name</label>
+        <div class="col-sm-10">
+            <input id="userLastName" name="userLastName" class="form-control" type="text" ng-model="search.userLastName" placeholder="Enter the AkUsers User Last Name"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userCity" class="col-sm-2 control-label">User City</label>
+        <div class="col-sm-10">
+            <input id="userCity" name="userCity" class="form-control" type="text" ng-model="search.userCity" placeholder="Enter the AkUsers User City"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userState" class="col-sm-2 control-label">User State</label>
+        <div class="col-sm-10">
+            <input id="userState" name="userState" class="form-control" type="text" ng-model="search.userState" placeholder="Enter the AkUsers User State"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userZip" class="col-sm-2 control-label">User Zip</label>
+        <div class="col-sm-10">
+            <input id="userZip" name="userZip" class="form-control" type="text" ng-model="search.userZip" placeholder="Enter the AkUsers User Zip"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userEmailVerified" class="col-sm-2 control-label">User Email Verified</label>
+        <div class="col-sm-10">
+            <select id="userEmailVerified" name="userEmailVerified" class="form-control" ng-model="search.userEmailVerified" ng-options="u as u for u in userEmailVerifiedList">
+                <option value="">Choose a User Email Verified</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <label for="userVerificationCode" class="col-sm-2 control-label">User Verification Code</label>
+        <div class="col-sm-10">
+            <input id="userVerificationCode" name="userVerificationCode" class="form-control" type="text" ng-model="search.userVerificationCode" placeholder="Enter the AkUsers User Verification Code"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userIp" class="col-sm-2 control-label">User Ip</label>
+        <div class="col-sm-10">
+            <input id="userIp" name="userIp" class="form-control" type="text" ng-model="search.userIp" placeholder="Enter the AkUsers User Ip"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userPhone" class="col-sm-2 control-label">User Phone</label>
+        <div class="col-sm-10">
+            <input id="userPhone" name="userPhone" class="form-control" type="text" ng-model="search.userPhone" placeholder="Enter the AkUsers User Phone"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userFax" class="col-sm-2 control-label">User Fax</label>
+        <div class="col-sm-10">
+            <input id="userFax" name="userFax" class="form-control" type="text" ng-model="search.userFax" placeholder="Enter the AkUsers User Fax"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userCountry" class="col-sm-2 control-label">User Country</label>
+        <div class="col-sm-10">
+            <input id="userCountry" name="userCountry" class="form-control" type="text" ng-model="search.userCountry" placeholder="Enter the AkUsers User Country"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userAddress" class="col-sm-2 control-label">User Address</label>
+        <div class="col-sm-10">
+            <input id="userAddress" name="userAddress" class="form-control" type="text" ng-model="search.userAddress" placeholder="Enter the AkUsers User Address"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="userAddress2" class="col-sm-2 control-label">User Address 2</label>
+        <div class="col-sm-10">
+            <input id="userAddress2" name="userAddress2" class="form-control" type="text" ng-model="search.userAddress2" placeholder="Enter the AkUsers User Address 2"></input>
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>User Email</th>
+                    <th>User Password</th>
+                    <th>User First Name</th>
+                    <th>User Last Name</th>
+                    <th>User City</th>
+                    <th>User State</th>
+                    <th>User Zip</th>
+                    <th>User Email Verified</th>
+                    <th>User Registration Date</th>
+                    <th>User Verification Code</th>
+                    <th>User Ip</th>
+                    <th>User Phone</th>
+                    <th>User Fax</th>
+                    <th>User Country</th>
+                    <th>User Address</th>
+                    <th>User Address 2</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userEmail}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userPassword}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userFirstName}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userLastName}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userCity}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userState}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userZip}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userEmailVerified}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userRegistrationDate| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userVerificationCode}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userIp}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userPhone}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userFax}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userCountry}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userAddress}}</a></td>
+                    <td><a href="#/AkUsers/edit/{{result.userId}}">{{result.userAddress2}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>
