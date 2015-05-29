@@ -1,5 +1,5 @@
 
-angular.module('agileRulesKart').controller('NewAkOptionGroupsController', function ($scope, $location, locationParser, AkOptionGroupsResource , AkProductOptionsResource, AkOptionsResource) {
+angular.module('agileRulesKart').controller('NewAkOptionGroupsController', function ($scope, $location, locationParser, AkOptionGroupsResource , AkProductOptionsResource, AkCategoryOptionsResource, AkOptionsResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.akOptionGroups = $scope.akOptionGroups || {};
@@ -19,6 +19,25 @@ angular.module('agileRulesKart').controller('NewAkOptionGroupsController', funct
                 var collectionItem = {};
                 collectionItem.productOptionId = selectedItem.value;
                 $scope.akOptionGroups.akProductOptionses.push(collectionItem);
+            });
+        }
+    });
+    
+    $scope.akCategoryOptionsesList = AkCategoryOptionsResource.queryAll(function(items){
+        $scope.akCategoryOptionsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.categoryOptionId,
+                text : item.categoryOptionId
+            });
+        });
+    });
+    $scope.$watch("akCategoryOptionsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.akOptionGroups.akCategoryOptionses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.categoryOptionId = selectedItem.value;
+                $scope.akOptionGroups.akCategoryOptionses.push(collectionItem);
             });
         }
     });

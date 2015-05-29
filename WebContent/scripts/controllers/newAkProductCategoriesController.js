@@ -1,8 +1,27 @@
 
-angular.module('agileRulesKart').controller('NewAkProductCategoriesController', function ($scope, $location, locationParser, AkProductCategoriesResource , AkProductsResource) {
+angular.module('agileRulesKart').controller('NewAkProductCategoriesController', function ($scope, $location, locationParser, AkProductCategoriesResource , AkCategoryOptionsResource, AkProductsResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.akProductCategories = $scope.akProductCategories || {};
+    
+    $scope.akCategoryOptionsesList = AkCategoryOptionsResource.queryAll(function(items){
+        $scope.akCategoryOptionsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.categoryOptionId,
+                text : item.categoryOptionId
+            });
+        });
+    });
+    $scope.$watch("akCategoryOptionsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.akProductCategories.akCategoryOptionses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.categoryOptionId = selectedItem.value;
+                $scope.akProductCategories.akCategoryOptionses.push(collectionItem);
+            });
+        }
+    });
     
     $scope.akProductsesList = AkProductsResource.queryAll(function(items){
         $scope.akProductsesSelectionList = $.map(items, function(item) {

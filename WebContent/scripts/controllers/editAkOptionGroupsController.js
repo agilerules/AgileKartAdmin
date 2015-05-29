@@ -1,6 +1,6 @@
 
 
-angular.module('agileRulesKart').controller('EditAkOptionGroupsController', function($scope, $routeParams, $location, AkOptionGroupsResource , AkProductOptionsResource, AkOptionsResource) {
+angular.module('agileRulesKart').controller('EditAkOptionGroupsController', function($scope, $routeParams, $location, AkOptionGroupsResource , AkProductOptionsResource, AkCategoryOptionsResource, AkOptionsResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -26,6 +26,27 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
                             }
                         });
                         self.original.akProductOptionses = $scope.akOptionGroups.akProductOptionses;
+                    }
+                    return labelObject;
+                });
+            });
+            AkCategoryOptionsResource.queryAll(function(items) {
+                $scope.akCategoryOptionsesSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        categoryOptionId : item.categoryOptionId
+                    };
+                    var labelObject = {
+                        value : item.categoryOptionId,
+                        text : item.categoryOptionId
+                    };
+                    if($scope.akOptionGroups.akCategoryOptionses){
+                        $.each($scope.akOptionGroups.akCategoryOptionses, function(idx, element) {
+                            if(item.categoryOptionId == element.categoryOptionId) {
+                                $scope.akCategoryOptionsesSelection.push(labelObject);
+                                $scope.akOptionGroups.akCategoryOptionses.push(wrappedObject);
+                            }
+                        });
+                        self.original.akCategoryOptionses = $scope.akOptionGroups.akCategoryOptionses;
                     }
                     return labelObject;
                 });
@@ -96,6 +117,17 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
                 var collectionItem = {};
                 collectionItem.productOptionId = selectedItem.value;
                 $scope.akOptionGroups.akProductOptionses.push(collectionItem);
+            });
+        }
+    });
+    $scope.akCategoryOptionsesSelection = $scope.akCategoryOptionsesSelection || [];
+    $scope.$watch("akCategoryOptionsesSelection", function(selection) {
+        if (typeof selection != 'undefined' && $scope.akOptionGroups) {
+            $scope.akOptionGroups.akCategoryOptionses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.categoryOptionId = selectedItem.value;
+                $scope.akOptionGroups.akCategoryOptionses.push(collectionItem);
             });
         }
     });
