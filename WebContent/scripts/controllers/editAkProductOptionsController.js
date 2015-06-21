@@ -16,7 +16,7 @@ angular.module('agileRulesKart').controller('EditAkProductOptionsController', fu
                     };
                     var labelObject = {
                         value : item.optionGroupId,
-                        text : item.optionGroupId
+                        text : item.optionGroupName
                     };
                     if($scope.akProductOptions.akOptionGroups && item.optionGroupId == $scope.akProductOptions.akOptionGroups.optionGroupId) {
                         $scope.akOptionGroupsSelection = labelObject;
@@ -33,7 +33,7 @@ angular.module('agileRulesKart').controller('EditAkProductOptionsController', fu
                     };
                     var labelObject = {
                         value : item.optionId,
-                        text : item.optionId
+                        text : item.optionName
                     };
                     if($scope.akProductOptions.akOptions && item.optionId == $scope.akProductOptions.akOptions.optionId) {
                         $scope.akOptionsSelection = labelObject;
@@ -50,7 +50,7 @@ angular.module('agileRulesKart').controller('EditAkProductOptionsController', fu
                     };
                     var labelObject = {
                         value : item.productId,
-                        text : item.productId
+                        text : item.productName
                     };
                     if($scope.akProductOptions.akProducts && item.productId == $scope.akProductOptions.akProducts.productId) {
                         $scope.akProductsSelection = labelObject;

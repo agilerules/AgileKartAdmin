@@ -1,6 +1,6 @@
 
 
-angular.module('agileRulesKart').controller('SearchAkProductCategoriesController', function($scope, $http, AkProductCategoriesResource , AkCategoryOptionsResource, AkProductsResource) {
+angular.module('agileRulesKart').controller('SearchAkProductCategoriesController', function($scope, $http, AkProductCategoriesResource , AkProductsResource, AkCategoryOptionsResource) {
 
     $scope.search={};
     $scope.currentPage = 0;

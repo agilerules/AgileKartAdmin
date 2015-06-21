@@ -8,7 +8,7 @@ angular.module('agileRulesKart').controller('NewAkOptionsController', function (
         $scope.akOptionGroupsSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.optionGroupId,
-                text : item.optionGroupId
+                text : item.optionGroupName
             });
         });
     });
@@ -23,7 +23,7 @@ angular.module('agileRulesKart').controller('NewAkOptionsController', function (
         $scope.akProductOptionsesSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.productOptionId,
-                text : item.productOptionId
+                text : item.productOptionName
             });
         });
     });

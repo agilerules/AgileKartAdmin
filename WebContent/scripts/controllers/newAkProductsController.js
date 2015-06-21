@@ -1,5 +1,5 @@
 
-angular.module('agileRulesKart').controller('NewAkProductsController', function ($scope, $location, locationParser, AkProductsResource , AkProductCategoriesResource, AkOrderDetailsResource, AkProductOptionsResource) {
+angular.module('agileRulesKart').controller('NewAkProductsController', function ($scope, $location, locationParser, AkProductsResource , AkProductCategoriesResource, AkProductOptionsResource, AkOrderDetailsResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.akProducts = $scope.akProducts || {};
@@ -8,7 +8,7 @@ angular.module('agileRulesKart').controller('NewAkProductsController', function 
         $scope.akProductCategoriesSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.categoryId,
-                text : item.categoryId
+                text : item.categoryName
             });
         });
     });
@@ -29,30 +29,11 @@ angular.module('agileRulesKart').controller('NewAkProductsController', function 
         " false"
     ];
     
-    $scope.akOrderDetailsesList = AkOrderDetailsResource.queryAll(function(items){
-        $scope.akOrderDetailsesSelectionList = $.map(items, function(item) {
-            return ( {
-                value : item.detailId,
-                text : item.detailId
-            });
-        });
-    });
-    $scope.$watch("akOrderDetailsesSelection", function(selection) {
-        if (typeof selection != 'undefined') {
-            $scope.akProducts.akOrderDetailses = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.detailId = selectedItem.value;
-                $scope.akProducts.akOrderDetailses.push(collectionItem);
-            });
-        }
-    });
-    
     $scope.akProductOptionsesList = AkProductOptionsResource.queryAll(function(items){
         $scope.akProductOptionsesSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.productOptionId,
-                text : item.productOptionId
+                text : item.productOptionName
             });
         });
     });
@@ -63,6 +44,25 @@ angular.module('agileRulesKart').controller('NewAkProductsController', function 
                 var collectionItem = {};
                 collectionItem.productOptionId = selectedItem.value;
                 $scope.akProducts.akProductOptionses.push(collectionItem);
+            });
+        }
+    });
+    
+    $scope.akOrderDetailsesList = AkOrderDetailsResource.queryAll(function(items){
+        $scope.akOrderDetailsesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.detailId,
+                text : item.detailName
+            });
+        });
+    });
+    $scope.$watch("akOrderDetailsesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.akProducts.akOrderDetailses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.detailId = selectedItem.value;
+                $scope.akProducts.akOrderDetailses.push(collectionItem);
             });
         }
     });

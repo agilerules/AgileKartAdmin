@@ -34,16 +34,20 @@
                     </a>
                     <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
                         <div id="sidebar-entries" class="list-group">
-  							<a class="list-group-item" ng-class="{active: matchesRoute('AkCategoryOptions')}" href="#/AkCategoryOptions" data-toggle="offcanvas">AkCategoryOptions</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptionGroups')}" href="#/AkOptionGroups" data-toggle="offcanvas">AkOptionGroups</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptions')}" href="#/AkOptions" data-toggle="offcanvas">AkOptions</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrderDetails')}" href="#/AkOrderDetails" data-toggle="offcanvas">AkOrderDetails</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrders')}" href="#/AkOrders" data-toggle="offcanvas">AkOrders</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductCategories')}" href="#/AkProductCategories" data-toggle="offcanvas">AkProductCategories</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductOptions')}" href="#/AkProductOptions" data-toggle="offcanvas">AkProductOptions</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProducts')}" href="#/AkProducts" data-toggle="offcanvas">AkProducts</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkUsers')}" href="#/AkUsers" data-toggle="offcanvas">AkUsers</a>
-                        </div>
+
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptionGroups')}" href="#/AkOptionGroups" data-toggle="offcanvas">Option Groups</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptions')}" href="#/AkOptions" data-toggle="offcanvas">Options</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductCategories')}" href="#/AkProductCategories" data-toggle="offcanvas">Product Categories</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkCategoryOptions')}" href="#/AkCategoryOptions" data-toggle="offcanvas">Category Options</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProducts')}" href="#/AkProducts" data-toggle="offcanvas">Products</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductOptions')}" href="#/AkProductOptions" data-toggle="offcanvas">Product Options</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrders')}" href="#/AkOrders" data-toggle="offcanvas">Orders</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrderDetails')}" href="#/AkOrderDetails" data-toggle="offcanvas">Order Details</a>
+                        	
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkUsers')}" href="#/AkUsers" data-toggle="offcanvas">Users</a>
+                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkUserAddresses')}" href="#/AkUserAddresses" data-toggle="offcanvas">User Addresses</a>
+
+                                             </div>
                     </nav>
                 </div>
                 <!-- main area-->
@@ -57,8 +61,7 @@
     
     <div id="footer">
         <div class="container">
-            <p>Powered by <a href="http://jboss.org/forge">Forge</a></p>
-            <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+            <p>Powered by <a href="http://www.agilerulesconsultants.com">Agile Rules</a></p>
         </div>
     </div>
     
@@ -108,6 +111,10 @@
     <script src="scripts/controllers/newAkProductsController.js"></script>
     <script src="scripts/controllers/searchAkProductsController.js"></script>
     <script src="scripts/controllers/editAkProductsController.js"></script>
+    <script src="scripts/services/AkUserAddressFactory.js"></script>
+    <script src="scripts/controllers/newAkUserAddressController.js"></script>
+    <script src="scripts/controllers/searchAkUserAddressController.js"></script>
+    <script src="scripts/controllers/editAkUserAddressController.js"></script>
     <script src="scripts/services/AkUsersFactory.js"></script>
     <script src="scripts/controllers/newAkUsersController.js"></script>
     <script src="scripts/controllers/searchAkUsersController.js"></script>

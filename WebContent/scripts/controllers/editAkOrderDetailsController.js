@@ -33,7 +33,7 @@ angular.module('agileRulesKart').controller('EditAkOrderDetailsController', func
                     };
                     var labelObject = {
                         value : item.productId,
-                        text : item.productId
+                        text : item.productName
                     };
                     if($scope.akOrderDetails.akProducts && item.productId == $scope.akOrderDetails.akProducts.productId) {
                         $scope.akProductsSelection = labelObject;

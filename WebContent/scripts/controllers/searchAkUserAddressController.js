@@ -1,6 +1,6 @@
 
 
-angular.module('agileRulesKart').controller('SearchAkOptionGroupsController', function($scope, $http, AkOptionGroupsResource , AkOptionsResource, AkCategoryOptionsResource, AkProductOptionsResource) {
+angular.module('agileRulesKart').controller('SearchAkUserAddressController', function($scope, $http, AkUserAddressResource , AkUsersResource) {
 
     $scope.search={};
     $scope.currentPage = 0;
@@ -17,9 +17,10 @@ angular.module('agileRulesKart').controller('SearchAkOptionGroupsController', fu
         }
         return max;
     };
+    $scope.akUsersList = AkUsersResource.queryAll();
 
     $scope.performSearch = function() {
-        $scope.searchResults = AkOptionGroupsResource.queryAll(function(){
+        $scope.searchResults = AkUserAddressResource.queryAll(function(){
             $scope.numberOfPages();
         });
     };

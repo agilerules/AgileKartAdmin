@@ -1,6 +1,6 @@
 
 
-angular.module('agileRulesKart').controller('EditAkOptionGroupsController', function($scope, $routeParams, $location, AkOptionGroupsResource , AkProductOptionsResource, AkCategoryOptionsResource, AkOptionsResource) {
+angular.module('agileRulesKart').controller('EditAkOptionGroupsController', function($scope, $routeParams, $location, AkOptionGroupsResource , AkOptionsResource, AkCategoryOptionsResource, AkProductOptionsResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -9,23 +9,23 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
         var successCallback = function(data){
             self.original = data;
             $scope.akOptionGroups = new AkOptionGroupsResource(self.original);
-            AkProductOptionsResource.queryAll(function(items) {
-                $scope.akProductOptionsesSelectionList = $.map(items, function(item) {
+            AkOptionsResource.queryAll(function(items) {
+                $scope.akOptionsesSelectionList = $.map(items, function(item) {
                     var wrappedObject = {
-                        productOptionId : item.productOptionId
+                        optionId : item.optionId
                     };
                     var labelObject = {
-                        value : item.productOptionId,
-                        text : item.productOptionId
+                        value : item.optionId,
+                        text : item.optionName
                     };
-                    if($scope.akOptionGroups.akProductOptionses){
-                        $.each($scope.akOptionGroups.akProductOptionses, function(idx, element) {
-                            if(item.productOptionId == element.productOptionId) {
-                                $scope.akProductOptionsesSelection.push(labelObject);
-                                $scope.akOptionGroups.akProductOptionses.push(wrappedObject);
+                    if($scope.akOptionGroups.akOptionses){
+                        $.each($scope.akOptionGroups.akOptionses, function(idx, element) {
+                            if(item.optionId == element.optionId) {
+                                $scope.akOptionsesSelection.push(labelObject);
+                                $scope.akOptionGroups.akOptionses.push(wrappedObject);
                             }
                         });
-                        self.original.akProductOptionses = $scope.akOptionGroups.akProductOptionses;
+                        self.original.akOptionses = $scope.akOptionGroups.akOptionses;
                     }
                     return labelObject;
                 });
@@ -37,7 +37,7 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
                     };
                     var labelObject = {
                         value : item.categoryOptionId,
-                        text : item.categoryOptionId
+                        text : item.categoryOptionName
                     };
                     if($scope.akOptionGroups.akCategoryOptionses){
                         $.each($scope.akOptionGroups.akCategoryOptionses, function(idx, element) {
@@ -51,23 +51,23 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
                     return labelObject;
                 });
             });
-            AkOptionsResource.queryAll(function(items) {
-                $scope.akOptionsesSelectionList = $.map(items, function(item) {
+            AkProductOptionsResource.queryAll(function(items) {
+                $scope.akProductOptionsesSelectionList = $.map(items, function(item) {
                     var wrappedObject = {
-                        optionId : item.optionId
+                        productOptionId : item.productOptionId
                     };
                     var labelObject = {
-                        value : item.optionId,
-                        text : item.optionId
+                        value : item.productOptionId,
+                        text : item.productOptionName
                     };
-                    if($scope.akOptionGroups.akOptionses){
-                        $.each($scope.akOptionGroups.akOptionses, function(idx, element) {
-                            if(item.optionId == element.optionId) {
-                                $scope.akOptionsesSelection.push(labelObject);
-                                $scope.akOptionGroups.akOptionses.push(wrappedObject);
+                    if($scope.akOptionGroups.akProductOptionses){
+                        $.each($scope.akOptionGroups.akProductOptionses, function(idx, element) {
+                            if(item.productOptionId == element.productOptionId) {
+                                $scope.akProductOptionsesSelection.push(labelObject);
+                                $scope.akOptionGroups.akProductOptionses.push(wrappedObject);
                             }
                         });
-                        self.original.akOptionses = $scope.akOptionGroups.akOptionses;
+                        self.original.akProductOptionses = $scope.akOptionGroups.akProductOptionses;
                     }
                     return labelObject;
                 });
@@ -109,14 +109,14 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
         $scope.akOptionGroups.$remove(successCallback, errorCallback);
     };
     
-    $scope.akProductOptionsesSelection = $scope.akProductOptionsesSelection || [];
-    $scope.$watch("akProductOptionsesSelection", function(selection) {
+    $scope.akOptionsesSelection = $scope.akOptionsesSelection || [];
+    $scope.$watch("akOptionsesSelection", function(selection) {
         if (typeof selection != 'undefined' && $scope.akOptionGroups) {
-            $scope.akOptionGroups.akProductOptionses = [];
+            $scope.akOptionGroups.akOptionses = [];
             $.each(selection, function(idx,selectedItem) {
                 var collectionItem = {};
-                collectionItem.productOptionId = selectedItem.value;
-                $scope.akOptionGroups.akProductOptionses.push(collectionItem);
+                collectionItem.optionId = selectedItem.value;
+                $scope.akOptionGroups.akOptionses.push(collectionItem);
             });
         }
     });
@@ -131,14 +131,14 @@ angular.module('agileRulesKart').controller('EditAkOptionGroupsController', func
             });
         }
     });
-    $scope.akOptionsesSelection = $scope.akOptionsesSelection || [];
-    $scope.$watch("akOptionsesSelection", function(selection) {
+    $scope.akProductOptionsesSelection = $scope.akProductOptionsesSelection || [];
+    $scope.$watch("akProductOptionsesSelection", function(selection) {
         if (typeof selection != 'undefined' && $scope.akOptionGroups) {
-            $scope.akOptionGroups.akOptionses = [];
+            $scope.akOptionGroups.akProductOptionses = [];
             $.each(selection, function(idx,selectedItem) {
                 var collectionItem = {};
-                collectionItem.optionId = selectedItem.value;
-                $scope.akOptionGroups.akOptionses.push(collectionItem);
+                collectionItem.productOptionId = selectedItem.value;
+                $scope.akOptionGroups.akProductOptionses.push(collectionItem);
             });
         }
     });

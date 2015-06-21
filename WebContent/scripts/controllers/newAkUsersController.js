@@ -1,5 +1,5 @@
 
-angular.module('agileRulesKart').controller('NewAkUsersController', function ($scope, $location, locationParser, AkUsersResource , AkOrdersResource) {
+angular.module('agileRulesKart').controller('NewAkUsersController', function ($scope, $location, locationParser, AkUsersResource , AkUserAddressResource, AkOrdersResource) {
     $scope.disabled = false;
     $scope.$location = $location;
     $scope.akUsers = $scope.akUsers || {};
@@ -8,6 +8,25 @@ angular.module('agileRulesKart').controller('NewAkUsersController', function ($s
         "true",
         " false"
     ];
+    
+    $scope.akUserAddressesList = AkUserAddressResource.queryAll(function(items){
+        $scope.akUserAddressesSelectionList = $.map(items, function(item) {
+            return ( {
+                value : item.addressId,
+                text : item.addressId
+            });
+        });
+    });
+    $scope.$watch("akUserAddressesSelection", function(selection) {
+        if (typeof selection != 'undefined') {
+            $scope.akUsers.akUserAddresses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.addressId = selectedItem.value;
+                $scope.akUsers.akUserAddresses.push(collectionItem);
+            });
+        }
+    });
     
     $scope.akOrdersesList = AkOrdersResource.queryAll(function(items){
         $scope.akOrdersesSelectionList = $.map(items, function(item) {

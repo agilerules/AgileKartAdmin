@@ -1,6 +1,6 @@
 
 
-angular.module('agileRulesKart').controller('EditAkProductsController', function($scope, $routeParams, $location, AkProductsResource , AkProductCategoriesResource, AkOrderDetailsResource, AkProductOptionsResource) {
+angular.module('agileRulesKart').controller('EditAkProductsController', function($scope, $routeParams, $location, AkProductsResource , AkProductCategoriesResource, AkProductOptionsResource, AkOrderDetailsResource) {
     var self = this;
     $scope.disabled = false;
     $scope.$location = $location;
@@ -16,33 +16,12 @@ angular.module('agileRulesKart').controller('EditAkProductsController', function
                     };
                     var labelObject = {
                         value : item.categoryId,
-                        text : item.categoryId
+                        text : item.categoryName
                     };
                     if($scope.akProducts.akProductCategories && item.categoryId == $scope.akProducts.akProductCategories.categoryId) {
                         $scope.akProductCategoriesSelection = labelObject;
                         $scope.akProducts.akProductCategories = wrappedObject;
                         self.original.akProductCategories = $scope.akProducts.akProductCategories;
-                    }
-                    return labelObject;
-                });
-            });
-            AkOrderDetailsResource.queryAll(function(items) {
-                $scope.akOrderDetailsesSelectionList = $.map(items, function(item) {
-                    var wrappedObject = {
-                        detailId : item.detailId
-                    };
-                    var labelObject = {
-                        value : item.detailId,
-                        text : item.detailId
-                    };
-                    if($scope.akProducts.akOrderDetailses){
-                        $.each($scope.akProducts.akOrderDetailses, function(idx, element) {
-                            if(item.detailId == element.detailId) {
-                                $scope.akOrderDetailsesSelection.push(labelObject);
-                                $scope.akProducts.akOrderDetailses.push(wrappedObject);
-                            }
-                        });
-                        self.original.akOrderDetailses = $scope.akProducts.akOrderDetailses;
                     }
                     return labelObject;
                 });
@@ -54,7 +33,7 @@ angular.module('agileRulesKart').controller('EditAkProductsController', function
                     };
                     var labelObject = {
                         value : item.productOptionId,
-                        text : item.productOptionId
+                        text : item.productOptionName
                     };
                     if($scope.akProducts.akProductOptionses){
                         $.each($scope.akProducts.akProductOptionses, function(idx, element) {
@@ -64,6 +43,27 @@ angular.module('agileRulesKart').controller('EditAkProductsController', function
                             }
                         });
                         self.original.akProductOptionses = $scope.akProducts.akProductOptionses;
+                    }
+                    return labelObject;
+                });
+            });
+            AkOrderDetailsResource.queryAll(function(items) {
+                $scope.akOrderDetailsesSelectionList = $.map(items, function(item) {
+                    var wrappedObject = {
+                        detailId : item.detailId
+                    };
+                    var labelObject = {
+                        value : item.detailId,
+                        text : item.detailName
+                    };
+                    if($scope.akProducts.akOrderDetailses){
+                        $.each($scope.akProducts.akOrderDetailses, function(idx, element) {
+                            if(item.detailId == element.detailId) {
+                                $scope.akOrderDetailsesSelection.push(labelObject);
+                                $scope.akProducts.akOrderDetailses.push(wrappedObject);
+                            }
+                        });
+                        self.original.akOrderDetailses = $scope.akProducts.akOrderDetailses;
                     }
                     return labelObject;
                 });
@@ -119,17 +119,6 @@ angular.module('agileRulesKart').controller('EditAkProductsController', function
         "true",  
         " false"  
     ];
-    $scope.akOrderDetailsesSelection = $scope.akOrderDetailsesSelection || [];
-    $scope.$watch("akOrderDetailsesSelection", function(selection) {
-        if (typeof selection != 'undefined' && $scope.akProducts) {
-            $scope.akProducts.akOrderDetailses = [];
-            $.each(selection, function(idx,selectedItem) {
-                var collectionItem = {};
-                collectionItem.detailId = selectedItem.value;
-                $scope.akProducts.akOrderDetailses.push(collectionItem);
-            });
-        }
-    });
     $scope.akProductOptionsesSelection = $scope.akProductOptionsesSelection || [];
     $scope.$watch("akProductOptionsesSelection", function(selection) {
         if (typeof selection != 'undefined' && $scope.akProducts) {
@@ -138,6 +127,17 @@ angular.module('agileRulesKart').controller('EditAkProductsController', function
                 var collectionItem = {};
                 collectionItem.productOptionId = selectedItem.value;
                 $scope.akProducts.akProductOptionses.push(collectionItem);
+            });
+        }
+    });
+    $scope.akOrderDetailsesSelection = $scope.akOrderDetailsesSelection || [];
+    $scope.$watch("akOrderDetailsesSelection", function(selection) {
+        if (typeof selection != 'undefined' && $scope.akProducts) {
+            $scope.akProducts.akOrderDetailses = [];
+            $.each(selection, function(idx,selectedItem) {
+                var collectionItem = {};
+                collectionItem.detailId = selectedItem.value;
+                $scope.akProducts.akOrderDetailses.push(collectionItem);
             });
         }
     });

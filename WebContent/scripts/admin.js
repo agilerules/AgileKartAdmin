@@ -28,9 +28,14 @@ angular.module('agileRulesKart',['ngRoute','ngResource'])
       .when('/AkProducts',{templateUrl:'views/AkProducts/search.html',controller:'SearchAkProductsController'})
       .when('/AkProducts/new',{templateUrl:'views/AkProducts/detail.html',controller:'NewAkProductsController'})
       .when('/AkProducts/edit/:AkProductsId',{templateUrl:'views/AkProducts/detail.html',controller:'EditAkProductsController'})
+      .when('/AkUserAddresses',{templateUrl:'views/AkUserAddress/search.html',controller:'SearchAkUserAddressController'})
+      .when('/AkUserAddresses/new',{templateUrl:'views/AkUserAddress/detail.html',controller:'NewAkUserAddressController'})
+      .when('/AkUserAddresses/edit/:AkUserAddressId',{templateUrl:'views/AkUserAddress/detail.html',controller:'EditAkUserAddressController'})
       .when('/AkUsers',{templateUrl:'views/AkUsers/search.html',controller:'SearchAkUsersController'})
       .when('/AkUsers/new',{templateUrl:'views/AkUsers/detail.html',controller:'NewAkUsersController'})
       .when('/AkUsers/edit/:AkUsersId',{templateUrl:'views/AkUsers/detail.html',controller:'EditAkUsersController'})
+      
+      
       .otherwise({
         redirectTo: '/'
       });

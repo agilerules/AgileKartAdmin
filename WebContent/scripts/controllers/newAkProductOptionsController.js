@@ -8,7 +8,7 @@ angular.module('agileRulesKart').controller('NewAkProductOptionsController', fun
         $scope.akOptionGroupsSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.optionGroupId,
-                text : item.optionGroupId
+                text : item.optionGroupName
             });
         });
     });
@@ -23,7 +23,7 @@ angular.module('agileRulesKart').controller('NewAkProductOptionsController', fun
         $scope.akOptionsSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.optionId,
-                text : item.optionId
+                text : item.optionName
             });
         });
     });
@@ -38,7 +38,7 @@ angular.module('agileRulesKart').controller('NewAkProductOptionsController', fun
         $scope.akProductsSelectionList = $.map(items, function(item) {
             return ( {
                 value : item.productId,
-                text : item.productId
+                text : item.productName
             });
         });
     });

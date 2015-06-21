@@ -6,22 +6,11 @@
     <div ng-show="displayError" class="alert alert-danger">
         <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
     </div>
-    
-    <div class="form-group" ng-class="{'has-error': AkOrdersForm.akUsers.$invalid}">
-        <label for="akUsers" class="col-sm-2 control-label">Ak Users</label>
-        <div id="akUsersControls" class="col-sm-10">
-        <select id="akUsers" name="akUsers" class="form-control" ng-model="akUsersSelection" ng-options="a.text for a in akUsersSelectionList"  >
-            <option value="">Choose a Ak Users</option>
-        </select>
-        </div>
-    </div>
-
+   
     <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderAmount.$invalid}">
         <label for="orderAmount" class="col-sm-2 control-label">Order Amount</label>
         <div id="orderAmountControls" class="col-sm-10">
-            <input id="orderAmount" name="orderAmount" type="number" required class="form-control" ng-model="akOrders.orderAmount" placeholder="Enter the AkOrders Order Amount"></input>
-            <span class="help-block error" ng-show="AkOrdersForm.orderAmount.$error.required">required</span> 
-            <span class="help-block error" ng-show="AkOrdersForm.orderAmount.$error.number">not a number</span>
+            <input id="orderAmount" name="orderAmount"  required class="form-control" ng-model="akOrders.orderAmount" placeholder="Enter the AkOrders Order Amount"></input>
         </div>
     </div>
 
@@ -124,22 +113,110 @@
         </div>
     </div>
 
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillName.$invalid}">
+        <label for="orderBillName" class="col-sm-2 control-label">Order Bill Name</label>
+        <div id="orderBillNameControls" class="col-sm-10">
+            <input id="orderBillName" name="orderBillName" type="text" required ng-maxlength="100" class="form-control" ng-model="akOrders.orderBillName" placeholder="Enter the AkOrders Order Bill Name"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillName.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillName.$error.maxlength">maximum length is 100</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillAddress.$invalid}">
+        <label for="orderBillAddress" class="col-sm-2 control-label">Order Bill Address</label>
+        <div id="orderBillAddressControls" class="col-sm-10">
+            <input id="orderBillAddress" name="orderBillAddress" type="text" required ng-maxlength="100" class="form-control" ng-model="akOrders.orderBillAddress" placeholder="Enter the AkOrders Order Bill Address"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillAddress.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillAddress.$error.maxlength">maximum length is 100</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillAddress2.$invalid}">
+        <label for="orderBillAddress2" class="col-sm-2 control-label">Order Bill Address 2</label>
+        <div id="orderBillAddress2Controls" class="col-sm-10">
+            <input id="orderBillAddress2" name="orderBillAddress2" type="text" required ng-maxlength="100" class="form-control" ng-model="akOrders.orderBillAddress2" placeholder="Enter the AkOrders Order Bill Address 2"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillAddress2.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillAddress2.$error.maxlength">maximum length is 100</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillCity.$invalid}">
+        <label for="orderBillCity" class="col-sm-2 control-label">Order Bill City</label>
+        <div id="orderBillCityControls" class="col-sm-10">
+            <input id="orderBillCity" name="orderBillCity" type="text" required ng-maxlength="50" class="form-control" ng-model="akOrders.orderBillCity" placeholder="Enter the AkOrders Order Bill City"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillCity.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillCity.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillState.$invalid}">
+        <label for="orderBillState" class="col-sm-2 control-label">Order Bill State</label>
+        <div id="orderBillStateControls" class="col-sm-10">
+            <input id="orderBillState" name="orderBillState" type="text" required ng-maxlength="50" class="form-control" ng-model="akOrders.orderBillState" placeholder="Enter the AkOrders Order Bill State"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillState.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillState.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillZip.$invalid}">
+        <label for="orderBillZip" class="col-sm-2 control-label">Order Bill Zip</label>
+        <div id="orderBillZipControls" class="col-sm-10">
+            <input id="orderBillZip" name="orderBillZip" type="text" required ng-maxlength="20" class="form-control" ng-model="akOrders.orderBillZip" placeholder="Enter the AkOrders Order Bill Zip"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillZip.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillZip.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillCountry.$invalid}">
+        <label for="orderBillCountry" class="col-sm-2 control-label">Order Bill Country</label>
+        <div id="orderBillCountryControls" class="col-sm-10">
+            <input id="orderBillCountry" name="orderBillCountry" type="text" required ng-maxlength="50" class="form-control" ng-model="akOrders.orderBillCountry" placeholder="Enter the AkOrders Order Bill Country"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillCountry.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillCountry.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillPhone.$invalid}">
+        <label for="orderBillPhone" class="col-sm-2 control-label">Order Bill Phone</label>
+        <div id="orderBillPhoneControls" class="col-sm-10">
+            <input id="orderBillPhone" name="orderBillPhone" type="text" required ng-maxlength="20" class="form-control" ng-model="akOrders.orderBillPhone" placeholder="Enter the AkOrders Order Bill Phone"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillPhone.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillPhone.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderBillFax.$invalid}">
+        <label for="orderBillFax" class="col-sm-2 control-label">Order Bill Fax</label>
+        <div id="orderBillFaxControls" class="col-sm-10">
+            <input id="orderBillFax" name="orderBillFax" type="text" required ng-maxlength="20" class="form-control" ng-model="akOrders.orderBillFax" placeholder="Enter the AkOrders Order Bill Fax"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillFax.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderBillFax.$error.maxlength">maximum length is 20</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderPaymentMode.$invalid}">
+        <label for="orderPaymentMode" class="col-sm-2 control-label">Order Payment Mode</label>
+        <div id="orderPaymentModeControls" class="col-sm-10">
+            <input id="orderPaymentMode" name="orderPaymentMode" type="text" required ng-maxlength="50" class="form-control" ng-model="akOrders.orderPaymentMode" placeholder="Enter the AkOrders Order Payment Mode"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderPaymentMode.$error.required">required</span> 
+            <span class="help-block error" ng-show="AkOrdersForm.orderPaymentMode.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderPaymentDesc.$invalid}">
+        <label for="orderPaymentDesc" class="col-sm-2 control-label">Order Payment Desc</label>
+        <div id="orderPaymentDescControls" class="col-sm-10">
+            <input id="orderPaymentDesc" name="orderPaymentDesc" type="text" ng-maxlength="50" class="form-control" ng-model="akOrders.orderPaymentDesc" placeholder="Enter the AkOrders Order Payment Desc"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderPaymentDesc.$error.maxlength">maximum length is 50</span>
+        </div>
+    </div>
+
     <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderEmail.$invalid}">
         <label for="orderEmail" class="col-sm-2 control-label">Order Email</label>
         <div id="orderEmailControls" class="col-sm-10">
             <input id="orderEmail" name="orderEmail" type="text" required ng-maxlength="100" class="form-control" ng-model="akOrders.orderEmail" placeholder="Enter the AkOrders Order Email"></input>
             <span class="help-block error" ng-show="AkOrdersForm.orderEmail.$error.required">required</span> 
             <span class="help-block error" ng-show="AkOrdersForm.orderEmail.$error.maxlength">maximum length is 100</span>
-        </div>
-    </div>
-
-    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderDate.$invalid}">
-        <label for="orderDate" class="col-sm-2 control-label">Order Date</label>
-        <div id="orderDateControls" class="col-sm-10">
-            <datetime id="orderDate" name="orderDate" required ng-model="akOrders.orderDate" placeholder="Enter the AkOrders Order Date"></datetime>
-            <span class="help-block error" ng-show="AkOrdersForm.orderDate.$error.required">required</span> 
-            <span class="help-block error" ng-show="AkOrdersForm.orderDate.$error.maxlength">maximum length is 19</span>
-            <span class="help-block error" ng-show="AkOrdersForm.orderDate.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
         </div>
     </div>
 
@@ -151,15 +228,15 @@
         </div>
     </div>
 
-    <div class="form-group" ng-class="{'has-error': AkOrdersForm.akOrderDetailses.$invalid}">
-        <label for="akOrderDetailses" class="col-sm-2 control-label">Ak Order Detailses</label>
-        <div id="akOrderDetailsesControls" class="col-sm-10">
-            <select id="akOrderDetailses" name="akOrderDetailses" multiple class="form-control" ng-model="akOrderDetailsesSelection" ng-options="a.text for a in akOrderDetailsesSelectionList">
-                <option value="">Choose a Ak Order Detailses</option>
-            </select>
+    <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderStatus.$invalid}">
+        <label for="orderStatus" class="col-sm-2 control-label">Order Status</label>
+        <div id="orderStatusControls" class="col-sm-10">
+            <input id="orderStatus" name="orderStatus" type="text" ng-maxlength="20" class="form-control" ng-model="akOrders.orderStatus" placeholder="Enter the AkOrders Order Status"></input>
+            <span class="help-block error" ng-show="AkOrdersForm.orderStatus.$error.maxlength">maximum length is 20</span>
         </div>
     </div>
 
+    
     <div class="form-group" ng-class="{'has-error': AkOrdersForm.orderShipped.$invalid}">
         <label for="orderShipped" class="col-sm-2 control-label">Order Shipped</label>
         <div id="orderShippedControls" class="col-sm-10">
