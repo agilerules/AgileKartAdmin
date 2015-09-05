@@ -1,0 +1,697 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Order</a></li>
+		<li class="active">Order Details</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Order Details
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="OrdersForm" name="OrdersForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Orders/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Order</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Order</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.paymentGateway.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Payment
+									Gateway</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="paymentGateway"
+											name="paymentGateway" ng-model="paymentGatewaySelection"
+											ng-options="p.text for p in paymentGatewaySelectionList">
+											<option value="">Choose a Payment Gateway</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.users.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Users</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="users" name="users"
+											ng-model="usersSelection"
+											ng-options="u.text for u in usersSelectionList">
+											<option value="">Choose an User</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderAmount.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Amount</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderAmount"
+											name="orderAmount" type="number" required
+											class="form-control" ng-model="orders.orderAmount"
+											placeholder="Enter the Order Amount"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderAmount.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderAmount.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderShipName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Ship Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id=id=
+											"orderShipName" name="orderShipName" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderShipName"
+											placeholder="Enter the Order Ship Name"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderShipName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderShipName.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderShipAddress.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Ship Address</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderShipAddress"
+											name="orderShipAddress" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderShipAddress"
+											placeholder="Enter the Order Ship Address"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderShipAddress.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderShipAddress.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderShipAddress2.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Ship Address 2</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderShipAddress2"
+											name="orderShipAddress2" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderShipAddress2"
+											placeholder="Enter the Order Ship Address 2"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderShipAddress2.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderShipAddress2.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderCity.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									City</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderCity"
+											name="orderCity" type="text" required class="form-control"
+											ng-maxlength="50" ng-model="orders.orderCity"
+											placeholder="Enter the Order City"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderCity.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderCity.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderState.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									State</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderState"
+											name="orderState" type="text" required class="form-control"
+											ng-maxlength="50" ng-model="orders.orderState"
+											placeholder="Enter the Order State"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderState.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderState.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderZip.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Zip</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderZip"
+											name="orderZip" type="text" required class="form-control"
+											ng-maxlength="20" ng-model="orders.orderZip"
+											placeholder="Enter the Order Zip"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderZip.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderZip.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderCountry.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Country</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderCountry"
+											name="orderCountry" type="text" required class="form-control"
+											ng-maxlength="50" ng-model="orders.orderCountry"
+											placeholder="Enter the Order Country"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderCountry.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderCountry.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderPhone.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Phone</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderPhone"
+											name="orderPhone" type="text" required class="form-control"
+											ng-maxlength="20" ng-model="orders.orderPhone"
+											placeholder="Enter the Order Phone"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderPhone.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderPhone.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderFax.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Fax</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderFax"
+											name="orderFax" type="text" required class="form-control"
+											ng-maxlength="20" ng-model="orders.orderFax"
+											placeholder="Enter the Order Fax"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderFax.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderFax.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderShipping.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Shipping</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderShipping"
+											name="orderShipping" type="number" required
+											class="form-control" ng-model="orders.orderShipping"
+											placeholder="Enter the Order Shipping"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderShipping.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderShipping.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderTax.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Tax</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderTax"
+											name="orderTax" type="number" required class="form-control"
+											ng-model="orders.orderTax" placeholder="Enter the Order Tax">
+										<span class="help-block error"
+											ng-show="OrdersForm.orderTax.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderTax.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillName"
+											name="orderBillName" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderBillName"
+											placeholder="Enter the Order Bill Name"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillName.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillAddress.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Address</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillAddress"
+											name="orderBillAddress" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderBillAddress"
+											placeholder="Enter the Order Bill Address"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillAddress.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillAddress.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillAddress2.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Address 2</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillAddress2"
+											name="orderBillAddress2" type="text" required
+											class="form-control" ng-maxlength="100"
+											ng-model="orders.orderBillAddress2"
+											placeholder="Enter the Order Bill Address 2"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillAddress2.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillAddress2.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillCity.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Address 2</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillCity"
+											name="orderBillCity" type="text" required
+											class="form-control" ng-maxlength="50"
+											ng-model="orders.orderBillCity"
+											placeholder="Enter the Order Bill City"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillCity.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillCity.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillState.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill State</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillState"
+											name="orderBillState" type="text" required
+											class="form-control" ng-maxlength="50"
+											ng-model="orders.orderBillState"
+											placeholder="Enter the Order Bill State"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillState.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillState.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+							3` -
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillZip.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill State</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillZip"
+											name="orderBillZip" type="text" required class="form-control"
+											ng-maxlength="20" ng-model="orders.orderBillZip"
+											placeholder="Enter the Order Bill Zip"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillZip.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillZip.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillCountry.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Country</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillCountry"
+											name="orderBillCountry" type="text" required
+											class="form-control" ng-maxlength="50"
+											ng-model="orders.orderBillCountry"
+											placeholder="Enter the Order Bill Country"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillCountry.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillCountry.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillPhone.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Phone</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillPhone"
+											name="orderBillPhone" type="text" required
+											class="form-control" ng-maxlength="20"
+											ng-model="orders.orderBillPhone"
+											placeholder="Enter the Order Bill Phone"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillPhone.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillPhone.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderBillFax.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Bill Phone</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderBillFax"
+											name="orderBillFax" type="text" required class="form-control"
+											ng-maxlength="20" ng-model="orders.orderBillFax"
+											placeholder="Enter the Orders Order Bill Fax"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderBillFax.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderBillFax.$error.maxlength">maximum
+											length is 20</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderPaymentMode.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Payment Mode</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderPaymentMode"
+											name="orderPaymentMode" type="text" required
+											class="form-control" ng-maxlength="50"
+											ng-model="orders.orderPaymentMode"
+											placeholder="Enter the Order Payment Mode"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderPaymentMode.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderPaymentMode.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderPaymentDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Payment Desc</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderPaymentDesc"
+											name="orderPaymentDesc" type="text" required
+											class="form-control" ng-maxlength="50"
+											ng-model="orders.orderPaymentDesc"
+											placeholder="Enter the Order Payment Desc"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderPaymentDesc.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderEmail.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Payment Desc</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderEmail"
+											name="orderEmail" type="text" required class="form-control"
+											ng-maxlength="100" ng-model="orders.orderEmail"
+											placeholder="Enter the Order Email"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderEmail.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OrdersForm.orderEmail.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderTrackingNo.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Payment Desc</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderTrackingNo"
+											name="orderTrackingNo" type="text" required
+											class="form-control" ng-maxlength="80"
+											ng-model="orders.orderTrackingNo"
+											placeholder="Enter the Order Tracking No"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderTrackingNo.$error.maxlength">maximum
+											length is 80</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderType.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Payment Desc</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderType"
+											name="orderType" type="text" required class="form-control"
+											ng-maxlength="45" ng-model="orders.orderType"
+											placeholder="Enter the Order Type"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderType.$error.maxlength">maximum
+											length is 45</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderPickupTime.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Pickup Time</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="orderPickupTime"
+											name="orderPickupTime" class="form-control"
+											ng-model="orders.orderPickupTime"
+											placeholder="Enter the Order Pickup Time"> <span
+											class="help-block error"
+											ng-show="OrdersForm.orderPickupTime.$error.maxlength">maximum
+											length is 19</span> <span class="help-block error"
+											ng-show="OrdersForm.orderPickupTime.$error.datetimeFormat">does
+											not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01
+											22:00:00)</span>
+
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderStatuses.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Status
+									<div class="col-md-6 col-xs-12">
+										<div class="input-group ">
+											<span class="input-group-addon"><span
+												class="glyphicon glyphicon-list"></span></span> <select
+												class="form-control" id="orderStatuses" name="orderStatuses"
+												ng-model="orderStatusesSelection"
+												ng-options="o.text for o in orderStatusesSelectionList">
+												<option value="">Choose a Order Status</option>
+											</select>
+										</div>
+									</div>
+							</div>
+
+				
+
+							<div class="form-group"
+								ng-class="{'has-error': OrdersForm.orderShipped.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Shipped</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"></span> <input id="orderShipped"
+											name="orderShipped" type="checkbox" class="form-control"
+											ng-model="orders.orderShipped"
+											placeholder="Enter the Order Shipped">
+
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="orders.orderId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || OrdersForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

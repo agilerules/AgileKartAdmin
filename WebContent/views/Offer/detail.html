@@ -1,0 +1,199 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Events & Offers</a></li>
+	<li class="active">Offers</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Offer
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="OfferForm" name="OfferForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Offers/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Offer</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Offer</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.merchant.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="merchant" name="merchant"
+											ng-model="merchantSelection"
+											ng-options="m.text for m in merchantSelectionList">
+											<option value="">Choose a Merchant</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.product.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="product" name="product"
+											ng-model="productSelection"
+											ng-options="p.text for p in productSelectionList">
+											<option value="">Choose a Product</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.offerName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Offer
+									Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="offerName" name="offerName" type="text" ng-maxlength="45"
+											class="form-control" required ng-maxlength="45"
+											class="form-control" ng-model="offer.offerName"
+											placeholder="Enter the Offer Name"><span
+											class="help-block error"
+											ng-show="OfferForm.offerName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OfferForm.offerName.$error.maxlength">maximum
+											length is 45</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.offerDiscountPct.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Offer
+									Discount Percentage</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="offerDiscountPct"
+											name="offerDiscountPct" type="number" ng-maxlength="45"
+											class="form-control" required ng-maxlength="45"
+											ng-model="offer.offerDiscountPct"
+											placeholder="Enter the Offer Discount Percentage"><span
+											class="help-block error"
+											ng-show="OfferForm.offerName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OfferForm.offerDiscountPct.$error.number">not
+											a number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.offerStartDate.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Offer
+									Start Date</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span>
+										<date id="offerStartDate" name="offerStartDate"
+											ng-model="offer.offerStartDate"
+											placeholder="Enter the Offer Start Date"></date>
+										<span class="help-block error"
+											ng-show="OfferForm.offerStartDate.$error.maxlength">maximum
+											length is 10</span> <span class="help-block error"
+											ng-show="OfferForm.offerStartDate.$error.dateFormat">does
+											not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.offerEndDate.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Offer
+									End Date</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span>
+										<date id="offerEndDate" name="offerEndDate"
+											ng-model="offer.offerEndDate"
+											placeholder="Enter the Offer Offer End Date"></date>
+										<span class="help-block error"
+											ng-show="OfferForm.offerEndDate.$error.maxlength">maximum
+											length is 10</span> <span class="help-block error"
+											ng-show="OfferForm.offerEndDate.$error.dateFormat">does
+											not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': OfferForm.offerMaxCount.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Offer
+									Discount Percentage</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="offerMaxCount"
+											name="offerMaxCount" type="number" class="form-control"
+											ng-model="offer.offerMaxCount"
+											placeholder="Enter the Offer Max Count"> <span
+											class="help-block error"
+											ng-show="OfferForm.offerMaxCount.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="offer.offerId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || OfferForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

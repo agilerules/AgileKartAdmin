@@ -1,0 +1,132 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Order</a></li>
+		<li class="active">Order Status</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Order Status
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="OrderStatusForm"
+					name="OrderStatusForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/OrderStatuses/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Order Status</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Order
+										Status</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrderStatusForm.orderStatusDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Status Desc</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="orderStatusDesc"
+											name="orderStatusDesc" ng-model="orderStatusDescSelection"
+											ng-options="o.text for o in orderStatusDescSelectionList">
+											<option value="">Choose an Order Status Desc</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OrderStatusForm.orders.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="orders" name="orders"
+											ng-model="ordersSelection"
+											ng-options="o.text for o in ordersSelectionList">
+											<option value="">Choose an Orders</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-error': OrderStatusForm.orderStatusComment.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Status Comment</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											ng-maxlength="500" id="orderStatusComment"
+											name="orderStatusComment" type="text" class="form-control"
+											ng-model="orderStatus.orderStatusComment"
+											placeholder="Enter the Order Status Comment"> <span
+											class="help-block error"
+											ng-show="OrderStatusForm.orderStatusComment.$error.maxlength">maximum
+											length is 500</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-error': OrderStatusForm.orderStatusIsActive.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Order
+									Status Is Active</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											ng-maxlength="1" id="orderStatusIsActive"
+											name="orderStatusIsActive" type="text" class="form-control"
+											ng-model="orderStatus.orderStatusIsActive"
+											placeholder="Enter the Order Status Is Active"> <span
+											class="help-block error"
+											ng-show="OrderStatusForm.orderStatusIsActive.$error.maxlength">maximum
+											length is 1</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="orderStatus.orderStatusId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || OrderStatusForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+

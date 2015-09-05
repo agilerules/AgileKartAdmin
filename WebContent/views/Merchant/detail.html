@@ -1,0 +1,197 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Merchant</a></li>
+		<li class="active">Merchant Details</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Merchant Details
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="MerchantForm" name="MerchantForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Merchants/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Merchant</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Merchant</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<div class="form-group"
+								ng-class="{'has-error': MerchantForm.merchantName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant
+									Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantName" name="merchantName" ng-maxlength="50"
+											required ng-model="merchant.merchantName"
+											placeholder="Enter the Merchant Name" class="form-control">
+										<span class="help-block error"
+											ng-show="MerchantForm.merchantName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="MerchantForm.merchantName.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': MerchantForm.merchantEmail.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Email</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantEmail" name="merchantEmail" required
+											ng-maxlength="500" class="form-control"
+											ng-model="merchant.merchantEmail"
+											placeholder="Enter the Merchant Email"> <span
+											class="help-block error"
+											ng-show="MerchantForm.merchantEmail.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="MerchantForm.merchantEmail.$error.maxlength">maximum
+											length is 500</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': MerchantForm.merchantPhoneNo.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Phone No</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantPhoneNo" name="merchantPhoneNo" ng-maxlength="15"
+											class="form-control" ng-model="merchant.merchantPhoneNo"
+											placeholder="Enter the Merchant Phone No"> <span
+											class="help-block error"
+											ng-show="MerchantForm.merchantPhoneNo.$error.maxlength">maximum
+											length is 15</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': MerchantForm.minOrder.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Minimum
+									Order</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text" id="minOrder"
+											name="minOrder" type="number" class="form-control"
+											ng-model="merchant.minOrder"
+											placeholder="Enter the Merchant Minimum Order"> <span
+											class="help-block error"
+											ng-show="MerchantForm.minOrder.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': MerchantForm.deliveryTime.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Delivery
+									Time</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="deliveryTime" name="deliveryTime" type="number"
+											class="form-control" ng-model="merchant.deliveryTime"
+											placeholder="Enter the Merchant Delivery Time"> <span
+											class="help-block error"
+											ng-show="MerchantForm.deliveryTime.$error.number">not
+											a number</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group" ng-hide="$location.path().indexOf('/Merchants/new') > -1"
+								ng-class="{'has-error': MerchantForm.merchantRating.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Rating</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantRating" name="merchantRating" type="number"
+											class="form-control" ng-model="merchant.merchantRating"
+											placeholder="Enter the Merchant Rating"> <span
+											class="help-block error"
+											ng-show="MerchantForm.merchantRating.$error.number">not
+											a number</span>
+									</div>
+								</div>
+							</div>
+					</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="merchant.merchantId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || MerchantForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

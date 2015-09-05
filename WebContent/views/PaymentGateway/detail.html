@@ -1,0 +1,188 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Administration</a></li>
+		<li class="active">Payment Gateway</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Payment Gateway
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="PaymentGatewayForm" name="PaymentGatewayForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/PaymentGateways/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Payment Gateway</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Payment Gateway</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						
+						
+
+	<div class="form-group"
+								ng-class="{'has-error': PaymentGatewayForm.paymentGatewayName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Payment Gateway Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="paymentGatewayName" name="paymentGatewayName" ng-maxlength="45"
+											ng-model="paymentGateway.paymentGatewayName" class="form-control"
+											placeholder="Enter the Payment Gateway name"> 
+											<span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayName.$error.maxlength">maximum length is 45</span>
+									</div>
+								</div>
+							</div>
+	
+
+
+	<div class="form-group"
+								ng-class="{'has-error': PaymentGatewayForm.paymentGatewayDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Payment Gateway Description</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="paymentGatewayDesc" name="paymentGatewayDesc"  ng-maxlength="500"
+											ng-model="paymentGateway.paymentGatewayDesc" placeholder="Enter the Payment Gateway Description" class="form-control"> 
+										<span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayDesc.$error.maxlength">maximum length is 500</span>
+									</div>
+								</div>
+							</div>
+												
+						
+			
+						
+							
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="paymentGateway.paymentGatewayId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								 ng-disabled="isClean() || PaymentGatewayForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header ng-switch on="$location.path().indexOf('/PaymentGateways/new') > -1">
+    <h3 ng-switch-when="true">Create a new PaymentGateway</h3>
+    <h3 ng-switch-when="false">View or edit PaymentGateway</h3>
+</header>
+<form id="PaymentGatewayForm" name="PaymentGatewayForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.paymentGatewayName.$invalid}">
+        <label for="paymentGatewayName" class="col-sm-2 control-label">Payment Gateway Name</label>
+        <div id="paymentGatewayNameControls" class="col-sm-10">
+            <input id="paymentGatewayName" name="paymentGatewayName" type="text" ng-maxlength="45" class="form-control" ng-model="paymentGateway.paymentGatewayName" placeholder="Enter the PaymentGateway Payment Gateway Name"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayName.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.paymentGatewayDesc.$invalid}">
+        <label for="paymentGatewayDesc" class="col-sm-2 control-label">Payment Gateway Desc</label>
+        <div id="paymentGatewayDescControls" class="col-sm-10">
+            <input id="paymentGatewayDesc" name="paymentGatewayDesc" type="text" ng-maxlength="500" class="form-control" ng-model="paymentGateway.paymentGatewayDesc" placeholder="Enter the PaymentGateway Payment Gateway Desc"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.paymentGatewayDesc.$error.maxlength">maximum length is 500</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="paymentGateway.lastUpdateUserId" placeholder="Enter the PaymentGateway Last Update User Id"></input>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="paymentGateway.lastUpdateTs" placeholder="Enter the PaymentGateway Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="PaymentGatewayForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.merchantPaymentGateways.$invalid}">
+        <label for="merchantPaymentGateways" class="col-sm-2 control-label">Merchant Payment Gateways</label>
+        <div id="merchantPaymentGatewaysControls" class="col-sm-10">
+            <select id="merchantPaymentGateways" name="merchantPaymentGateways" multiple class="form-control" ng-model="merchantPaymentGatewaysSelection" ng-options="m.text for m in merchantPaymentGatewaysSelectionList">
+                <option value="">Choose a Merchant Payment Gateways</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': PaymentGatewayForm.orderses.$invalid}">
+        <label for="orderses" class="col-sm-2 control-label">Orderses</label>
+        <div id="ordersesControls" class="col-sm-10">
+            <select id="orderses" name="orderses" multiple class="form-control" ng-model="ordersesSelection" ng-options="o.text for o in ordersesSelectionList">
+                <option value="">Choose a Orderses</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="savePaymentGateway" name="savePaymentGateway" class="btn btn-primary" ng-disabled="isClean() || PaymentGatewayForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deletePaymentGateway" name="deletePaymentGateway" class="btn btn-danger" ng-show="paymentGateway.paymentGatewayId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

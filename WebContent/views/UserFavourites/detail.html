@@ -1,0 +1,70 @@
+<header ng-switch on="$location.path().indexOf('/UserFavourites/new') > -1">
+    <h3 ng-switch-when="true">Create a new UserFavourites</h3>
+    <h3 ng-switch-when="false">View or edit UserFavourites</h3>
+</header>
+<form id="UserFavouritesForm" name="UserFavouritesForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.users.$invalid}">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div id="usersControls" class="col-sm-10">
+        <select id="users" name="users" class="form-control" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList"  >
+            <option value="">Choose a Users</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.favouriteId.$invalid}">
+        <label for="favouriteId" class="col-sm-2 control-label">Favourite Id</label>
+        <div id="favouriteIdControls" class="col-sm-10">
+            <input id="favouriteId" name="favouriteId" type="text" required ng-maxlength="45" class="form-control" ng-model="userFavourites.favouriteId" placeholder="Enter the UserFavourites Favourite Id"></input>
+            <span class="help-block error" ng-show="UserFavouritesForm.favouriteId.$error.required">required</span> 
+            <span class="help-block error" ng-show="UserFavouritesForm.favouriteId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.orderFl.$invalid}">
+        <label for="orderFl" class="col-sm-2 control-label">Order Fl</label>
+        <div id="orderFlControls" class="col-sm-10">
+            <input id="orderFl" name="orderFl" type="text" ng-maxlength="45" class="form-control" ng-model="userFavourites.orderFl" placeholder="Enter the UserFavourites Order Fl"></input>
+            <span class="help-block error" ng-show="UserFavouritesForm.orderFl.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="userFavourites.lastUpdateUserId" placeholder="Enter the UserFavourites Last Update User Id"></input>
+            <span class="help-block error" ng-show="UserFavouritesForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserFavouritesForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="userFavourites.lastUpdateTs" placeholder="Enter the UserFavourites Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="UserFavouritesForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="UserFavouritesForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveUserFavourites" name="saveUserFavourites" class="btn btn-primary" ng-disabled="isClean() || UserFavouritesForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteUserFavourites" name="deleteUserFavourites" class="btn btn-danger" ng-show="userFavourites.userFavouriteId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

@@ -1,0 +1,215 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Merchant</a></li>
+		<li class="active">Merchant Address</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Merchant Address
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal"  id="MerchantAddressForm" name="MerchantAddressForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/MerchantAddresses/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Merchant Address</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Merchant Address</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						
+						
+						<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchant.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList" > 
+											<option value="">Choose a Merchant</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						
+						 
+	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantAddress.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Address</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantAddress" name="merchantAddress" type="text" ng-maxlength="100" class="form-control" ng-model="merchantAddress.merchantAddress" placeholder="Enter the Merchant Address"> 
+											<span class="help-block error" ng-show="MerchantAddressForm.merchantAddress.$error.maxlength">maximum length is 100</span>
+									</div>
+								</div>
+							</div>
+
+  	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantAddress2.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Address 2</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantAddress2" name="merchantAddress2" type="text" ng-maxlength="50" class="form-control" ng-model="merchantAddress.merchantAddress2" placeholder="Enter the Merchant Address 2"> 
+											 <span class="help-block error" ng-show="MerchantAddressForm.merchantAddress2.$error.maxlength">maximum length is 50</span>
+									</div>
+								</div>
+							</div>
+
+	  	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantCity.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant City</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="merchantCity" name="merchantCity" type="text" ng-maxlength="90" class="form-control" ng-model="merchantAddress.merchantCity" placeholder="Enter the  Merchant City"> 
+										<span class="help-block error" ng-show="MerchantAddressForm.merchantCity.$error.maxlength">maximum length is 90</span>
+									</div>
+								</div>
+							</div>
+
+   		  	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantCountry.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Country</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											 id="merchantCountry" name="merchantCountry" type="text" ng-maxlength="20" class="form-control" ng-model="merchantAddress.merchantCountry" placeholder="Enter the Merchant Country"> 
+										<span class="help-block error" ng-show="MerchantAddressForm.merchantCountry.$error.maxlength">maximum length is 20</span>
+									</div>
+								</div>
+							</div>
+	
+ 		<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantFax.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Fax</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input d="merchantFax" name="merchantFax" type="text" ng-maxlength="20" class="form-control" ng-model="merchantAddress.merchantFax" placeholder="Enter the Merchant Fax"> 
+										 <span class="help-block error" ng-show="MerchantAddressForm.merchantFax.$error.maxlength">maximum length is 20</span>
+									</div>
+								</div>
+							</div>
+	
+  
+		<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantFirstName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">First Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="merchantFirstName" name="merchantFirstName" type="text" ng-maxlength="50" class="form-control" ng-model="merchantAddress.merchantFirstName" placeholder="Enter the Merchant First Name"> 
+										            <span class="help-block error" ng-show="MerchantAddressForm.merchantFirstName.$error.maxlength">maximum length is 50</span>
+									</div>
+								</div>
+							</div>
+	
+	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantLastName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Last Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input  id="merchantLastName" name="merchantLastName" type="text" ng-maxlength="50" class="form-control" ng-model="merchantAddress.merchantLastName" placeholder="Enter the  Merchant Last Name"> 
+										                      <span class="help-block error" ng-show="MerchantAddressForm.merchantLastName.$error.maxlength">maximum length is 50</span>
+									</div>
+								</div>
+							</div>
+
+
+		<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantPhone.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Phone</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input  id="merchantPhone" name="merchantPhone" type="text" ng-maxlength="20" class="form-control" ng-model="merchantAddress.merchantPhone" placeholder="Enter the Merchant Phone"> 
+										                         <span class="help-block error" ng-show="MerchantAddressForm.merchantPhone.$error.maxlength">maximum length is 20</span>
+									</div>
+								</div>
+							</div>
+
+	<div class="form-group"
+								ng-class="{'has-error': MerchantAddressForm.merchantState.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant State</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="merchantState" name="merchantState" type="text" ng-maxlength="20" class="form-control" ng-model="merchantAddress.merchantState" placeholder="Enter the Merchant State"> 
+										                        <span class="help-block error" ng-show="MerchantAddressForm.merchantState.$error.maxlength">maximum length is 20</span>
+									</div>
+								</div>
+							</div>
+	
+	
+	<div class="form-group" ng-class="{'has-error': MerchantAddressForm.addressTypeName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Address Type Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="addressTypeName" name="addressTypeName" type="text" ng-maxlength="50" class="form-control" ng-model="merchantAddress.addressTypeName" placeholder="Enter the Address Type Name"> 
+										                       <span class="help-block error" ng-show="MerchantAddressForm.addressTypeName.$error.maxlength">maximum length is 50</span>
+									</div>
+								</div>
+							</div>
+
+  
+   	<div class="form-group" ng-class="{'has-error': MerchantAddressForm.merchantZip.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Zip</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="merchantZip" name="merchantZip" type="text" ng-maxlength="12" class="form-control" ng-model="merchantAddress.merchantZip" placeholder="Enter the Merchant Zip"> 
+										                       <span class="help-block error" ng-show="MerchantAddressForm.merchantZip.$error.maxlength">maximum length is 12</span>
+									</div>
+								</div>
+							</div>
+   
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="merchantAddress.merchantAddressId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || MerchantAddressForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+

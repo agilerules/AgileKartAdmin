@@ -1,0 +1,138 @@
+<div class="form-horizontal">
+    <h3>Create a new UserRewards</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/UserRewards/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for UserRewards</h3>
+    <form id="UserRewardsSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="loyaltyProgramTier" class="col-sm-2 control-label">Loyalty Program Tier</label>
+        <div class="col-sm-10">
+            <select id="loyaltyProgramTier" name="loyaltyProgramTier" class="form-control" ng-model="search.loyaltyProgramTier" ng-options="l as l.tierId for l in loyaltyProgramTierList">
+                <option value="">Choose a Loyalty Program Tier</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
+        <div class="col-sm-10">
+            <select id="orders" name="orders" class="form-control" ng-model="search.orders" ng-options="o as o.orderId for o in ordersList">
+                <option value="">Choose a Orders</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div class="col-sm-10">
+            <select id="users" name="users" class="form-control" ng-model="search.users" ng-options="u as u.userId for u in usersList">
+                <option value="">Choose a Users</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pointsEarned" class="col-sm-2 control-label">Points Earned</label>
+        <div class="col-sm-10">
+            <input id="pointsEarned" name="pointsEarned" class="form-control" type="text" ng-model="search.pointsEarned" placeholder="Enter the UserRewards Points Earned"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pointsRedeemed" class="col-sm-2 control-label">Points Redeemed</label>
+        <div class="col-sm-10">
+            <input id="pointsRedeemed" name="pointsRedeemed" class="form-control" type="text" ng-model="search.pointsRedeemed" placeholder="Enter the UserRewards Points Redeemed"></input>
+        </div>
+    </div>
+
+
+
+
+    <div class="form-group">
+        <label for="totalPointsEarned" class="col-sm-2 control-label">Total Points Earned</label>
+        <div class="col-sm-10">
+            <input id="totalPointsEarned" name="totalPointsEarned" class="form-control" type="text" ng-model="search.totalPointsEarned" placeholder="Enter the UserRewards Total Points Earned"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="totalPointsRedeemed" class="col-sm-2 control-label">Total Points Redeemed</label>
+        <div class="col-sm-10">
+            <input id="totalPointsRedeemed" name="totalPointsRedeemed" class="form-control" type="text" ng-model="search.totalPointsRedeemed" placeholder="Enter the UserRewards Total Points Redeemed"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" class="form-control" type="text" ng-model="search.lastUpdateUserId" placeholder="Enter the UserRewards Last Update User Id"></input>
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Loyalty Program Tier</th>
+                    <th>Orders</th>
+                    <th>Users</th>
+                    <th>Points Earned</th>
+                    <th>Points Redeemed</th>
+                    <th>Expiry Date</th>
+                    <th>Points Earned Date</th>
+                    <th>Points Redeeemed Date</th>
+                    <th>Total Points Earned</th>
+                    <th>Total Points Redeemed</th>
+                    <th>Last Update User Id</th>
+                    <th>Last Update Ts</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.loyaltyProgramTier.tierId}}</a></td>
+                        <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.orders.orderId}}</a></td>
+                        <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.users.userId}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.pointsEarned}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.pointsRedeemed}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.expiryDate| date:'mediumDate'}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.pointsEarnedDate| date:'mediumDate'}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.pointsRedeeemedDate| date:'mediumDate'}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.totalPointsEarned}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.totalPointsRedeemed}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/UserRewards/edit/{{result.rewardId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

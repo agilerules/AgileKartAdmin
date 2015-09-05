@@ -1,6 +1,6 @@
 'use strict';
 
-angular.module('agileRulesKart').filter('searchFilter', function() {
+angular.module('agilekartV2').filter('searchFilter', function() {
 
     function matchObjectProperties(expectedObject, actualObject) {
         var flag = true;

@@ -1,77 +1,334 @@
 <!DOCTYPE html>
-<html lang="en" ng-app="agileRulesKart">
+<html lang="en" ng-app="agilekartV2">
 <head>
-	<meta charset="UTF-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Agile Rules Kart</title>
-    <link href="styles/bootstrap.css" rel="stylesheet" media="screen">
-    <link href="styles/bootstrap-theme.css" rel="stylesheet" media="screen">
-    <link href="styles/main.css" rel="stylesheet" media="screen">
+<!-- META SECTION -->
+<title>AgileKart Admin</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+
+<link rel="icon" href="favicon.ico" type="image/x-icon" />
+<!-- END META SECTION -->
+
+<!-- CSS INCLUDE -->
+<link rel="stylesheet" type="text/css" id="theme"
+	href="css/theme-default.css" />
+<!-- EOF CSS INCLUDE -->
 </head>
 <body>
-    <div id="wrap">
-    	
-    	<div class="navbar navbar-inverse navbar-fixed-top">
-			<div class="container">
-                <div class="navbar-header">
-                    <button type="button" class="navbar-toggle" data-toggle="offcanvas">
-                      <span class="sr-only">Toggle navigation</span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                      <span class="icon-bar"></span>
-                    </button>
-				    <a class="navbar-brand" href="#">Agile Kart Admin Module</a>
-			    </div>
+	<!-- START PAGE CONTAINER -->
+	<div class="page-container">
+
+		<!-- START PAGE SIDEBAR -->
+		<div class="page-sidebar" ng-controller="NavController">
+			<!-- START X-NAVIGATION -->
+			<ul class="x-navigation">
+				<li class="xn-logo"><a href="index.html">AgileKart Admin</a> <a
+					href="#" class="x-navigation-control"></a></li>
+				<li class="xn-profile"><a href="#" class="profile-mini"> <img
+						src="img/logo.jpg" alt="Admin" />
+				</a>
+					<div class="profile">
+						<div class="profile-image">
+							<img src="img/logo.jpg" alt="Admin" />
+						</div>
+						<div class="profile-data">
+							<div class="profile-data-name">Admin</div>
+							<div class="profile-data-title">Administrator</div>
+						</div>
+						<div class="profile-controls">
+							<a href="pages-profile.html" class="profile-control-left"><span
+								class="fa fa-info"></span></a> <a href="pages-messages.html"
+								class="profile-control-right"><span class="fa fa-envelope"></span></a>
+						</div>
+					</div></li>
+				<li class="xn-title">Navigation</li>
+				<li class="active"><a href=""><span
+						class="fa fa-desktop"></span> <span class="xn-text">Dashboard</span></a>
+				</li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-files-o"></span> <span class="xn-text">Catalog</span></a>
+					<ul>
+						<li class="xn-openable"><a><span
+								class="fa fa-align-center"></span> Category & Options</a>
+							<ul>
+								<li><a href="#/Categories"><span class="fa fa-align-center"></span>
+										Category</a></li>
+								<li><a href="#/CategoryOptions"><span class="fa fa-align-justify"></span>
+										Category Options</a></li>
+							</ul></li>
+						<li class="xn-openable"><a href="#"><span
+								class="fa fa-envelope"></span> Features & Options</a>
+							<ul>
+								<li><a href="#/Features"><span
+										class="fa fa-inbox"></span> Features</a></li>
+								<li><a href="#/FeatureOptions"><span
+										class="fa fa-file-text"></span> Feature Options</a></li>
+							</ul></li>
+						<li class="xn-openable"><a href="#"><span
+								class="fa fa-file"></span> Merchant</a>
+							<ul>
+								<li><a href="#/Merchants"><span
+										class="fa fa-copy"></span> Merchant Details</a></li>
+								<li><a href="#/MerchantCategories"><span
+										class="fa fa-file-o"></span> Merchant Category</a></li>
+								<li><a href="#/MerchantFeatures"><span
+										class="fa fa-file-o"></span> Merchant Features</a></li>
+								<li><a href="#/MerchantAddresses"><span
+										class="fa fa-file-o"></span> Merchant Address</a></li>
+								<li><a href="#/TaxRuleMerchants"><span
+										class="fa fa-file-o"></span> Merchant Tax Rules</a></li>
+								<li><a href="#/MerchantPaymentGateways"><span
+										class="fa fa-file-o"></span> Merchant Payment Gateway</a></li>
+								<li><a href="#/MerchantReviews"><span
+										class="fa fa-file-o"></span> Merchant Reviews</a></li>
+							</ul></li>
+						<li class="xn-openable"><a href="#"><span
+								class="fa fa-sign-in"></span> Product</a>
+							<ul>
+								<li><a href="#/Products"> Product Details</a></li>
+								<li><a href="#/ProductCategories"> Product Category</a></li>
+								<li><a href="#/ProductOptions"> Product Options</a></li>
+								<li><a href="#/ProductReviews"> Product Reviews</a></li>
+							</ul></li>
+					</ul></li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-file-text-o"></span> <span class="xn-text">Loyalty</span></a>
+					<ul>
+						<li><a href="#/LoyaltyEventDetails">Loyalty Event</a></li>
+						<li><a href="#/LoyaltyProgramTiers">Program Tier</a></li>
+					</ul></li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-cogs"></span> <span class="xn-text">Orders</span></a>
+					<ul>
+						<li><a href="#/Orders"><span class="fa fa-heart"></span>
+								Order Details</a></li>
+						<li><a href="#/OrderStatuses"><span class="fa fa-cogs"></span>
+								Order Status</a></li>
+					</ul></li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-pencil"></span> <span class="xn-text">Options & Groups</span></a>
+					<ul>
+						<li><a href="#/Options"><span
+								class="fa fa-file-text-o"></span> Options</a></li>
+					</ul>
+					<ul>
+						<li><a href="#/OptionGroups"><span
+								class="fa fa-file-text-o"></span> Option Groups</a></li>
+					</ul></li>
+				<!--<li class="xn-openable"><a href="tables.html"><span
+						class="fa fa-table"></span> <span class="xn-text">User</span></a>
+					<ul>
+						<li><a href="#/Users"><span
+								class="fa fa-align-justify"></span> Details</a></li>
+						<li><a href="#/UserAddresses"><span
+								class="fa fa-sort-alpha-desc"></span> Address</a></li>
+						<li><a href="#/UserFavourites"><span
+								class="fa fa-download"></span> Favourites</a></li>
+						<li><a href="#/UserRewards"><span
+								class="fa fa-download"></span> Rewards</a></li>
+					</ul></li>-->
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-bar-chart-o"></span> <span class="xn-text">Price
+							Rules</span></a>
+					<ul>
+						<li><a href="#/Taxes"><span class="xn-text">Tax</span></a></li>
+						<li><a href="#/TaxRules"><span class="xn-text">Tax
+									Rules</span></a></li>
+					</ul></li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-bar-chart-o"></span> <span class="xn-text">Events
+							& Offers</span></a>
+					<ul>
+						<li><a href="#/Events"><span class="xn-text">Events</span></a></li>
+						<li><a href="#/Offers"><span class="xn-text">Offers</span></a></li>
+					</ul></li>
+				<li class="xn-openable"><a href="#"><span
+						class="fa fa-bar-chart-o"></span> <span class="xn-text">Administration</span></a>
+					<ul>
+						<li><a href="#/PaymentGateways"><span class="xn-text">Payment
+									Gateway</span></a></li>
+						<li><a href="#/OrderStatusDescs"><span class="xn-text">Order
+									Status</span></a></li>
+					</ul></li>
+				<!--<li><a href="index.html"><span class="fa fa-desktop"></span>
+						<span class="xn-text">Shipping</span></a></li>-->
+
+			</ul>
+			<!-- END X-NAVIGATION -->
+		</div>
+		<!-- END PAGE SIDEBAR -->
+
+		<!-- PAGE CONTENT -->
+		<div class="page-content">
+
+			<!-- START X-NAVIGATION VERTICAL -->
+			<ul class="x-navigation x-navigation-horizontal x-navigation-panel">
+				<!-- TOGGLE NAVIGATION -->
+				<li class="xn-icon-button"><a href="#"
+					class="x-navigation-minimize"><span class="fa fa-dedent"></span></a>
+				</li>
+				<!-- END TOGGLE NAVIGATION -->
+				<!-- SEARCH -->
+				<li class="xn-search">
+					<form role="form">
+						<input type="text" name="search" placeholder="Search..." />
+					</form>
+				</li>
+				<!-- END SEARCH -->
+				<!-- SIGN OUT -->
+				<li class="xn-icon-button pull-right"><a href="#"
+					class="mb-control" data-box="#mb-signout"><span
+						class="fa fa-sign-out"></span></a></li>
+				<!-- END SIGN OUT -->
+				<!-- MESSAGES -->
+				<li class="xn-icon-button pull-right"><a href="#"><span
+						class="fa fa-comments"></span></a>
+					<div class="informer informer-danger">4</div>
+					<div
+						class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<span class="fa fa-comments"></span> Messages
+							</h3>
+							<div class="pull-right">
+								<span class="label label-danger">4 new</span>
+							</div>
+						</div>
+						<div class="panel-body list-group list-group-contacts scroll"
+							style="height: 200px;">
+							<a href="#" class="list-group-item">
+								<div class="list-group-status status-online"></div> <img
+								src="assets/images/users/user2.jpg" class="pull-left"
+								alt="John Doe" /> <span class="contacts-title">John Doe</span>
+								<p>Praesent placerat tellus id augue condimentum</p>
+							</a> <a href="#" class="list-group-item">
+								<div class="list-group-status status-away"></div> <img
+								src="assets/images/users/user.jpg" class="pull-left"
+								alt="Dmitry Ivaniuk" /> <span class="contacts-title">Dmitry
+									Ivaniuk</span>
+								<p>Donec risus sapien, sagittis et magna quis</p>
+							</a> <a href="#" class="list-group-item">
+								<div class="list-group-status status-away"></div> <img
+								src="assets/images/users/user3.jpg" class="pull-left"
+								alt="Nadia Ali" /> <span class="contacts-title">Nadia
+									Ali</span>
+								<p>Mauris vel eros ut nunc rhoncus cursus sed</p>
+							</a> <a href="#" class="list-group-item">
+								<div class="list-group-status status-offline"></div> <img
+								src="assets/images/users/user6.jpg" class="pull-left"
+								alt="Darth Vader" /> <span class="contacts-title">Darth
+									Vader</span>
+								<p>I want my money back!</p>
+							</a>
+						</div>
+						<div class="panel-footer text-center">
+							<a href="pages-messages.html">Show all messages</a>
+						</div>
+					</div></li>
+				<!-- END MESSAGES -->
+				<!-- TASKS -->
+				<li class="xn-icon-button pull-right"><a href="#"><span
+						class="fa fa-tasks"></span></a>
+					<div class="informer informer-warning">3</div>
+					<div
+						class="panel panel-primary animated zoomIn xn-drop-left xn-panel-dragging">
+						<div class="panel-heading">
+							<h3 class="panel-title">
+								<span class="fa fa-tasks"></span> Tasks
+							</h3>
+							<div class="pull-right">
+								<span class="label label-warning">3 active</span>
+							</div>
+						</div>
+						<div class="panel-body list-group scroll" style="height: 200px;">
+							<a class="list-group-item" href="#"> <strong>Phasellus
+									augue arcu, elementum</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-danger"
+										role="progressbar" aria-valuenow="50" aria-valuemin="0"
+										aria-valuemax="100" style="width: 50%;">50%</div>
+								</div> <small class="text-muted">John Doe, 25 Sep 2014 / 50%</small>
+							</a> <a class="list-group-item" href="#"> <strong>Aenean
+									ac cursus</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-warning"
+										role="progressbar" aria-valuenow="80" aria-valuemin="0"
+										aria-valuemax="100" style="width: 80%;">80%</div>
+								</div> <small class="text-muted">Dmitry Ivaniuk, 24 Sep 2014 /
+									80%</small>
+							</a> <a class="list-group-item" href="#"> <strong>Lorem
+									ipsum dolor</strong>
+								<div class="progress progress-small progress-striped active">
+									<div class="progress-bar progress-bar-success"
+										role="progressbar" aria-valuenow="95" aria-valuemin="0"
+										aria-valuemax="100" style="width: 95%;">95%</div>
+								</div> <small class="text-muted">John Doe, 23 Sep 2014 / 95%</small>
+							</a> <a class="list-group-item" href="#"> <strong>Cras
+									suscipit ac quam at tincidunt.</strong>
+								<div class="progress progress-small">
+									<div class="progress-bar" role="progressbar"
+										aria-valuenow="100" aria-valuemin="0" aria-valuemax="100"
+										style="width: 100%;">100%</div>
+								</div> <small class="text-muted">John Doe, 21 Sep 2014 /</small><small
+								class="text-success"> Done</small>
+							</a>
+						</div>
+						<div class="panel-footer text-center">
+							<a href="pages-tasks.html">Show all tasks</a>
+						</div>
+					</div></li>
+				<!-- END TASKS -->
+			</ul>
+			<!-- END X-NAVIGATION VERTICAL -->
+			<div ng-view>
+
+		
+				<!-- END PAGE CONTENT WRAPPER -->
 			</div>
-    	</div>
-        
-        <div class="container">
-            <div class="row row-offcanvas row-offcanvas-left">
-                <!-- sidebar -->
-                <div class="col-xs-6 col-sm-3 well sidebar-offcanvas">
-                    <a href="index.html">
-                        <img class="hidden-xs img-responsive" src="img/logo.jpg" alt="AgileKart Admin Module"></img>
-                    </a>
-                    <nav class="sidebar-nav" ng-controller="NavController" role="navigation">
-                        <div id="sidebar-entries" class="list-group">
+		</div>
+		<!-- END PAGE CONTENT -->
+	</div>
+	<!-- END PAGE CONTAINER -->
 
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptionGroups')}" href="#/AkOptionGroups" data-toggle="offcanvas">Option Groups</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOptions')}" href="#/AkOptions" data-toggle="offcanvas">Options</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductCategories')}" href="#/AkProductCategories" data-toggle="offcanvas">Product Categories</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkCategoryOptions')}" href="#/AkCategoryOptions" data-toggle="offcanvas">Category Options</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProducts')}" href="#/AkProducts" data-toggle="offcanvas">Products</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkProductOptions')}" href="#/AkProductOptions" data-toggle="offcanvas">Product Options</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrders')}" href="#/AkOrders" data-toggle="offcanvas">Orders</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkOrderDetails')}" href="#/AkOrderDetails" data-toggle="offcanvas">Order Details</a>
-                        	
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkUsers')}" href="#/AkUsers" data-toggle="offcanvas">Users</a>
-                        	<a class="list-group-item" ng-class="{active: matchesRoute('AkUserAddresses')}" href="#/AkUserAddresses" data-toggle="offcanvas">User Addresses</a>
+	<!-- MESSAGE BOX-->
+	<div class="message-box animated fadeIn" data-sound="alert"
+		id="mb-signout">
+		<div class="mb-container">
+			<div class="mb-middle">
+				<div class="mb-title">
+					<span class="fa fa-sign-out"></span> Log <strong>Out</strong> ?
+				</div>
+				<div class="mb-content">
+					<p>Are you sure you want to log out?</p>
+					<p>Press No if youwant to continue work. Press Yes to logout
+						current user.</p>
+				</div>
+				<div class="mb-footer">
+					<div class="pull-right">
+						<a href="pages-login.html" class="btn btn-success btn-lg">Yes</a>
+						<button class="btn btn-default btn-lg mb-control-close">No</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<!-- END MESSAGE BOX-->
 
-                                             </div>
-                    </nav>
-                </div>
-                <!-- main area-->
-                <div class="col-sm-offset-1 col-xs-12 col-sm-8 well mainarea">
-                    <div id="main" ng-view>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    
-    <div id="footer">
-        <div class="container">
-            <p>Powered by <a href="http://www.agilerulesconsultants.com">Agile Rules</a></p>
-        </div>
-    </div>
-    
-    <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
+	<!-- START PRELOADS -->
+	<audio id="audio-alert" src="audio/alert.mp3" preload="auto"></audio>
+	<audio id="audio-fail" src="audio/fail.mp3" preload="auto"></audio>
+	<!-- END PRELOADS -->
+
+	<!-- START SCRIPTS -->
+	<!-- START PLUGINS -->
+	    <script src="scripts/vendor/modernizr-2.8.3.min.js"></script>
     <script src="scripts/vendor/jquery-2.0.3.js"></script>
     <script src="scripts/vendor/bootstrap.js"></script>
-    <script src="scripts/vendor/angular.js"></script>
+	<script src="scripts/vendor/angular.js"></script>
     <script src="scripts/vendor/angular-route.js"></script>
     <script src="scripts/vendor/angular-resource.js"></script>
-    <script src="scripts/admin.js"></script>
+    <script src="scripts/app.js"></script>
     <script src="scripts/offcanvas.js"></script>
     <script src="scripts/directives/datepicker.js"></script>
     <script src="scripts/directives/timepicker.js"></script>
@@ -79,45 +336,183 @@
     <script src="scripts/filters/startFromFilter.js"></script>
     <script src="scripts/filters/genericSearchFilter.js"></script>
     <script src="scripts/services/locationParser.js"></script>
-    <script src="scripts/services/AkCategoryOptionsFactory.js"></script>
-    <script src="scripts/controllers/newAkCategoryOptionsController.js"></script>
-    <script src="scripts/controllers/searchAkCategoryOptionsController.js"></script>
-    <script src="scripts/controllers/editAkCategoryOptionsController.js"></script>
-    <script src="scripts/services/AkOptionGroupsFactory.js"></script>
-    <script src="scripts/controllers/newAkOptionGroupsController.js"></script>
-    <script src="scripts/controllers/searchAkOptionGroupsController.js"></script>
-    <script src="scripts/controllers/editAkOptionGroupsController.js"></script>
-    <script src="scripts/services/AkOptionsFactory.js"></script>
-    <script src="scripts/controllers/newAkOptionsController.js"></script>
-    <script src="scripts/controllers/searchAkOptionsController.js"></script>
-    <script src="scripts/controllers/editAkOptionsController.js"></script>
-    <script src="scripts/services/AkOrderDetailsFactory.js"></script>
-    <script src="scripts/controllers/newAkOrderDetailsController.js"></script>
-    <script src="scripts/controllers/searchAkOrderDetailsController.js"></script>
-    <script src="scripts/controllers/editAkOrderDetailsController.js"></script>
-    <script src="scripts/services/AkOrdersFactory.js"></script>
-    <script src="scripts/controllers/newAkOrdersController.js"></script>
-    <script src="scripts/controllers/searchAkOrdersController.js"></script>
-    <script src="scripts/controllers/editAkOrdersController.js"></script>
-    <script src="scripts/services/AkProductCategoriesFactory.js"></script>
-    <script src="scripts/controllers/newAkProductCategoriesController.js"></script>
-    <script src="scripts/controllers/searchAkProductCategoriesController.js"></script>
-    <script src="scripts/controllers/editAkProductCategoriesController.js"></script>
-    <script src="scripts/services/AkProductOptionsFactory.js"></script>
-    <script src="scripts/controllers/newAkProductOptionsController.js"></script>
-    <script src="scripts/controllers/searchAkProductOptionsController.js"></script>
-    <script src="scripts/controllers/editAkProductOptionsController.js"></script>
-    <script src="scripts/services/AkProductsFactory.js"></script>
-    <script src="scripts/controllers/newAkProductsController.js"></script>
-    <script src="scripts/controllers/searchAkProductsController.js"></script>
-    <script src="scripts/controllers/editAkProductsController.js"></script>
-    <script src="scripts/services/AkUserAddressFactory.js"></script>
-    <script src="scripts/controllers/newAkUserAddressController.js"></script>
-    <script src="scripts/controllers/searchAkUserAddressController.js"></script>
-    <script src="scripts/controllers/editAkUserAddressController.js"></script>
-    <script src="scripts/services/AkUsersFactory.js"></script>
-    <script src="scripts/controllers/newAkUsersController.js"></script>
-    <script src="scripts/controllers/searchAkUsersController.js"></script>
-    <script src="scripts/controllers/editAkUsersController.js"></script>
+    <script src="scripts/services/CategoryFactory.js"></script>
+    <script src="scripts/controllers/newCategoryController.js"></script>
+    <script src="scripts/controllers/searchCategoryController.js"></script>
+    <script src="scripts/controllers/editCategoryController.js"></script>
+    <script src="scripts/services/CategoryOptionsFactory.js"></script>
+    <script src="scripts/controllers/newCategoryOptionsController.js"></script>
+    <script src="scripts/controllers/searchCategoryOptionsController.js"></script>
+    <script src="scripts/controllers/editCategoryOptionsController.js"></script>
+    <script src="scripts/services/EventFactory.js"></script>
+    <script src="scripts/controllers/newEventController.js"></script>
+    <script src="scripts/controllers/searchEventController.js"></script>
+    <script src="scripts/controllers/editEventController.js"></script>
+    <script src="scripts/services/FeatureOptionsFactory.js"></script>
+    <script src="scripts/controllers/newFeatureOptionsController.js"></script>
+    <script src="scripts/controllers/searchFeatureOptionsController.js"></script>
+    <script src="scripts/controllers/editFeatureOptionsController.js"></script>
+    <script src="scripts/services/FeaturesFactory.js"></script>
+    <script src="scripts/controllers/newFeaturesController.js"></script>
+    <script src="scripts/controllers/searchFeaturesController.js"></script>
+    <script src="scripts/controllers/editFeaturesController.js"></script>
+    <script src="scripts/services/LoyaltyEventDetailsFactory.js"></script>
+    <script src="scripts/controllers/newLoyaltyEventDetailsController.js"></script>
+    <script src="scripts/controllers/searchLoyaltyEventDetailsController.js"></script>
+    <script src="scripts/controllers/editLoyaltyEventDetailsController.js"></script>
+    <script src="scripts/services/LoyaltyProgramMerchantFactory.js"></script>
+    <script src="scripts/controllers/newLoyaltyProgramMerchantController.js"></script>
+    <script src="scripts/controllers/searchLoyaltyProgramMerchantController.js"></script>
+    <script src="scripts/controllers/editLoyaltyProgramMerchantController.js"></script>
+    <script src="scripts/services/LoyaltyProgramTierFactory.js"></script>
+    <script src="scripts/controllers/newLoyaltyProgramTierController.js"></script>
+    <script src="scripts/controllers/searchLoyaltyProgramTierController.js"></script>
+    <script src="scripts/controllers/editLoyaltyProgramTierController.js"></script>
+    <script src="scripts/services/MerchantFactory.js"></script>
+    <script src="scripts/controllers/newMerchantController.js"></script>
+    <script src="scripts/controllers/searchMerchantController.js"></script>
+    <script src="scripts/controllers/editMerchantController.js"></script>
+    <script src="scripts/services/MerchantAddressFactory.js"></script>
+    <script src="scripts/controllers/newMerchantAddressController.js"></script>
+    <script src="scripts/controllers/searchMerchantAddressController.js"></script>
+    <script src="scripts/controllers/editMerchantAddressController.js"></script>
+    <script src="scripts/services/MerchantCategoryFactory.js"></script>
+    <script src="scripts/controllers/newMerchantCategoryController.js"></script>
+    <script src="scripts/controllers/searchMerchantCategoryController.js"></script>
+    <script src="scripts/controllers/editMerchantCategoryController.js"></script>
+    <script src="scripts/services/MerchantFeaturesFactory.js"></script>
+    <script src="scripts/controllers/newMerchantFeaturesController.js"></script>
+    <script src="scripts/controllers/searchMerchantFeaturesController.js"></script>
+    <script src="scripts/controllers/editMerchantFeaturesController.js"></script>
+    <script src="scripts/services/MerchantPaymentGatewayFactory.js"></script>
+    <script src="scripts/controllers/newMerchantPaymentGatewayController.js"></script>
+    <script src="scripts/controllers/searchMerchantPaymentGatewayController.js"></script>
+    <script src="scripts/controllers/editMerchantPaymentGatewayController.js"></script>
+    <script src="scripts/services/MerchantReviewFactory.js"></script>
+    <script src="scripts/controllers/newMerchantReviewController.js"></script>
+    <script src="scripts/controllers/searchMerchantReviewController.js"></script>
+    <script src="scripts/controllers/editMerchantReviewController.js"></script>
+    <script src="scripts/services/OfferFactory.js"></script>
+    <script src="scripts/controllers/newOfferController.js"></script>
+    <script src="scripts/controllers/searchOfferController.js"></script>
+    <script src="scripts/controllers/editOfferController.js"></script>
+    <script src="scripts/services/OptionGroupsFactory.js"></script>
+    <script src="scripts/controllers/newOptionGroupsController.js"></script>
+    <script src="scripts/controllers/searchOptionGroupsController.js"></script>
+    <script src="scripts/controllers/editOptionGroupsController.js"></script>
+    <script src="scripts/services/OptionsFactory.js"></script>
+    <script src="scripts/controllers/newOptionsController.js"></script>
+    <script src="scripts/controllers/searchOptionsController.js"></script>
+    <script src="scripts/controllers/editOptionsController.js"></script>
+    <script src="scripts/services/OrderDetailsFactory.js"></script>
+    <script src="scripts/controllers/newOrderDetailsController.js"></script>
+    <script src="scripts/controllers/searchOrderDetailsController.js"></script>
+    <script src="scripts/controllers/editOrderDetailsController.js"></script>
+    <script src="scripts/services/OrderStatusFactory.js"></script>
+    <script src="scripts/controllers/newOrderStatusController.js"></script>
+    <script src="scripts/controllers/searchOrderStatusController.js"></script>
+    <script src="scripts/controllers/editOrderStatusController.js"></script>
+    <script src="scripts/services/OrderStatusDescFactory.js"></script>
+    <script src="scripts/controllers/newOrderStatusDescController.js"></script>
+    <script src="scripts/controllers/searchOrderStatusDescController.js"></script>
+    <script src="scripts/controllers/editOrderStatusDescController.js"></script>
+    <script src="scripts/services/OrdersFactory.js"></script>
+    <script src="scripts/controllers/newOrdersController.js"></script>
+    <script src="scripts/controllers/searchOrdersController.js"></script>
+    <script src="scripts/controllers/editOrdersController.js"></script>
+    <script src="scripts/services/PaymentGatewayFactory.js"></script>
+    <script src="scripts/controllers/newPaymentGatewayController.js"></script>
+    <script src="scripts/controllers/searchPaymentGatewayController.js"></script>
+    <script src="scripts/controllers/editPaymentGatewayController.js"></script>
+    <script src="scripts/services/ProductFactory.js"></script>
+    <script src="scripts/controllers/newProductController.js"></script>
+    <script src="scripts/controllers/searchProductController.js"></script>
+    <script src="scripts/controllers/editProductController.js"></script>
+    <script src="scripts/services/ProductCategoryFactory.js"></script>
+    <script src="scripts/controllers/newProductCategoryController.js"></script>
+    <script src="scripts/controllers/searchProductCategoryController.js"></script>
+    <script src="scripts/controllers/editProductCategoryController.js"></script>
+    <script src="scripts/services/ProductOptionFactory.js"></script>
+    <script src="scripts/controllers/newProductOptionController.js"></script>
+    <script src="scripts/controllers/searchProductOptionController.js"></script>
+    <script src="scripts/controllers/editProductOptionController.js"></script>
+    <script src="scripts/services/ProductReviewFactory.js"></script>
+    <script src="scripts/controllers/newProductReviewController.js"></script>
+    <script src="scripts/controllers/searchProductReviewController.js"></script>
+    <script src="scripts/controllers/editProductReviewController.js"></script>
+    <script src="scripts/services/TaxFactory.js"></script>
+    <script src="scripts/controllers/newTaxController.js"></script>
+    <script src="scripts/controllers/searchTaxController.js"></script>
+    <script src="scripts/controllers/editTaxController.js"></script>
+    <script src="scripts/services/TaxRuleFactory.js"></script>
+    <script src="scripts/controllers/newTaxRuleController.js"></script>
+    <script src="scripts/controllers/searchTaxRuleController.js"></script>
+    <script src="scripts/controllers/editTaxRuleController.js"></script>
+    <script src="scripts/services/TaxRuleMerchantFactory.js"></script>
+    <script src="scripts/controllers/newTaxRuleMerchantController.js"></script>
+    <script src="scripts/controllers/searchTaxRuleMerchantController.js"></script>
+    <script src="scripts/controllers/editTaxRuleMerchantController.js"></script>
+    <script src="scripts/services/UserAddressFactory.js"></script>
+    <script src="scripts/controllers/newUserAddressController.js"></script>
+    <script src="scripts/controllers/searchUserAddressController.js"></script>
+    <script src="scripts/controllers/editUserAddressController.js"></script>
+    <script src="scripts/services/UserFavouritesFactory.js"></script>
+    <script src="scripts/controllers/newUserFavouritesController.js"></script>
+    <script src="scripts/controllers/searchUserFavouritesController.js"></script>
+    <script src="scripts/controllers/editUserFavouritesController.js"></script>
+    <script src="scripts/services/UserRewardsFactory.js"></script>
+    <script src="scripts/controllers/newUserRewardsController.js"></script>
+    <script src="scripts/controllers/searchUserRewardsController.js"></script>
+    <script src="scripts/controllers/editUserRewardsController.js"></script>
+    <script src="scripts/services/UsersFactory.js"></script>
+     <script src="scripts/services/SequenceKeyTableFactory.js"></script>
+    <script src="scripts/controllers/newUsersController.js"></script>
+    <script src="scripts/controllers/searchUsersController.js"></script>
+    <script src="scripts/controllers/editUsersController.js"></script>
+	<script type="text/javascript" src="js/plugins/jquery/jquery-ui.min.js"></script>
+	<script type="text/javascript"
+		src="js/plugins/bootstrap/bootstrap.min.js"></script>
+	<!-- END PLUGINS -->
+
+	<!-- START THIS PAGE PLUGINS-->
+	<script type='text/javascript' src='js/plugins/icheck/icheck.min.js'></script>
+	<script type="text/javascript"
+		src="js/plugins/mcustomscrollbar/jquery.mCustomScrollbar.min.js"></script>
+	<script type="text/javascript"
+		src="js/plugins/scrolltotop/scrolltopcontrol.js"></script>
+
+	<script type="text/javascript" src="js/plugins/morris/raphael-min.js"></script>
+	<script type="text/javascript" src="js/plugins/morris/morris.min.js"></script>
+	<script type="text/javascript" src="js/plugins/rickshaw/d3.v3.js"></script>
+	<script type="text/javascript"
+		src="js/plugins/rickshaw/rickshaw.min.js"></script>
+	<script type='text/javascript'
+		src='js/plugins/jvectormap/jquery-jvectormap-1.2.2.min.js'></script>
+	<script type='text/javascript'
+		src='js/plugins/jvectormap/jquery-jvectormap-world-mill-en.js'></script>
+	<script type='text/javascript'
+		src='js/plugins/bootstrap/bootstrap-datepicker.js'></script>
+	<script type="text/javascript" src="js/plugins/owl/owl.carousel.min.js"></script>
+
+	<script type="text/javascript" src="js/plugins/moment.min.js"></script>
+	<script type="text/javascript"
+		src="js/plugins/daterangepicker/daterangepicker.js"></script>
+	<!-- END THIS PAGE PLUGINS-->
+
+	<!-- START TEMPLATE -->
+	<!-- <script type="text/javascript" src="js/settings.js"></script> -->
+
+	<script type="text/javascript" src="js/plugins.js"></script>
+	<script type="text/javascript" src="js/actions.js"></script>
+	<script type="text/javascript" src="js/demo_dashboard.js"></script>
+	
+	<!-- END TEMPLATE -->
+	<!-- END SCRIPTS -->
 </body>
 </html>
+
+
+
+
+
+

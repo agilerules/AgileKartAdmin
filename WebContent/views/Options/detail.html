@@ -1,0 +1,99 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Options & Option Groups</a></li>
+		<li class="active">Options</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Options
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="OptionsForm" name="OptionsForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Options/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Option</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Option</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OptionsForm.optionGroups.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Option
+									Groups</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="optionGroups" name="optionGroups"
+											ng-model="optionGroupsSelection"
+											ng-options="o.text for o in optionGroupsSelectionList">
+											<option value="">Choose an Option Group</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': OptionsForm.optionName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Option
+									Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="optionName" name="optionName" type="text" required
+											ng-maxlength="50" class="form-control"
+											ng-model="options.optionName"
+											placeholder="Enter the Options Name"> <span
+											class="help-block error"
+											ng-show="OptionsForm.optionName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OptionsForm.optionName.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+						</div>
+
+					
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="options.optionId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || OptionsForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

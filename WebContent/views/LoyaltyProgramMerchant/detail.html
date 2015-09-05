@@ -1,0 +1,110 @@
+<header ng-switch on="$location.path().indexOf('/LoyaltyProgramMerchants/new') > -1">
+    <h3 ng-switch-when="true">Create a new LoyaltyProgramMerchant</h3>
+    <h3 ng-switch-when="false">View or edit LoyaltyProgramMerchant</h3>
+</header>
+<form id="LoyaltyProgramMerchantForm" name="LoyaltyProgramMerchantForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.merchant.$invalid}">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div id="merchantControls" class="col-sm-10">
+        <select id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList"  >
+            <option value="">Choose a Merchant</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.startDate.$invalid}">
+        <label for="startDate" class="col-sm-2 control-label">Start Date</label>
+        <div id="startDateControls" class="col-sm-10">
+            <date id="startDate" name="startDate" ng-model="loyaltyProgramMerchant.startDate" placeholder="Enter the LoyaltyProgramMerchant Start Date"></date>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.startDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.startDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.endDate.$invalid}">
+        <label for="endDate" class="col-sm-2 control-label">End Date</label>
+        <div id="endDateControls" class="col-sm-10">
+            <date id="endDate" name="endDate" ng-model="loyaltyProgramMerchant.endDate" placeholder="Enter the LoyaltyProgramMerchant End Date"></date>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.endDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.endDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.programParticipateFlag.$invalid}">
+        <label for="programParticipateFlag" class="col-sm-2 control-label">Program Participate Flag</label>
+        <div id="programParticipateFlagControls" class="col-sm-10">
+            <input id="programParticipateFlag" name="programParticipateFlag" type="text" ng-maxlength="1" class="form-control" ng-model="loyaltyProgramMerchant.programParticipateFlag" placeholder="Enter the LoyaltyProgramMerchant Program Participate Flag"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.programParticipateFlag.$error.maxlength">maximum length is 1</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.amountSpent.$invalid}">
+        <label for="amountSpent" class="col-sm-2 control-label">Amount Spent</label>
+        <div id="amountSpentControls" class="col-sm-10">
+            <input id="amountSpent" name="amountSpent" type="number" class="form-control" ng-model="loyaltyProgramMerchant.amountSpent" placeholder="Enter the LoyaltyProgramMerchant Amount Spent"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.amountSpent.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.pointsEarned.$invalid}">
+        <label for="pointsEarned" class="col-sm-2 control-label">Points Earned</label>
+        <div id="pointsEarnedControls" class="col-sm-10">
+            <input id="pointsEarned" name="pointsEarned" type="number" class="form-control" ng-model="loyaltyProgramMerchant.pointsEarned" placeholder="Enter the LoyaltyProgramMerchant Points Earned"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.pointsEarned.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.pointsRedeemed.$invalid}">
+        <label for="pointsRedeemed" class="col-sm-2 control-label">Points Redeemed</label>
+        <div id="pointsRedeemedControls" class="col-sm-10">
+            <input id="pointsRedeemed" name="pointsRedeemed" type="number" class="form-control" ng-model="loyaltyProgramMerchant.pointsRedeemed" placeholder="Enter the LoyaltyProgramMerchant Points Redeemed"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.pointsRedeemed.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.amountRedeemed.$invalid}">
+        <label for="amountRedeemed" class="col-sm-2 control-label">Amount Redeemed</label>
+        <div id="amountRedeemedControls" class="col-sm-10">
+            <input id="amountRedeemed" name="amountRedeemed" type="number" class="form-control" ng-model="loyaltyProgramMerchant.amountRedeemed" placeholder="Enter the LoyaltyProgramMerchant Amount Redeemed"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.amountRedeemed.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.minAmountSpent.$invalid}">
+        <label for="minAmountSpent" class="col-sm-2 control-label">Min Amount Spent</label>
+        <div id="minAmountSpentControls" class="col-sm-10">
+            <input id="minAmountSpent" name="minAmountSpent" type="number" class="form-control" ng-model="loyaltyProgramMerchant.minAmountSpent" placeholder="Enter the LoyaltyProgramMerchant Min Amount Spent"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.minAmountSpent.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="loyaltyProgramMerchant.lastUpdateUserId" placeholder="Enter the LoyaltyProgramMerchant Last Update User Id"></input>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': LoyaltyProgramMerchantForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="loyaltyProgramMerchant.lastUpdateTs" placeholder="Enter the LoyaltyProgramMerchant Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="LoyaltyProgramMerchantForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveLoyaltyProgramMerchant" name="saveLoyaltyProgramMerchant" class="btn btn-primary" ng-disabled="isClean() || LoyaltyProgramMerchantForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteLoyaltyProgramMerchant" name="deleteLoyaltyProgramMerchant" class="btn btn-danger" ng-show="loyaltyProgramMerchant.loyaltyProgramMerchantId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

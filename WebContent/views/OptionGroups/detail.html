@@ -1,0 +1,104 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Options & Groups</a></li>
+		<li class="active">Option Groups</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Option Group
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="OptionGroupsForm"
+					name="OptionGroupsForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/OptionGroups/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Option Group</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Option
+										Group</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+							<div class="form-group"
+								ng-class="{'has-error': OptionGroupsForm.optionGroupName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Option
+									Group Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="optionGroupName" name="optionGroupName" required
+											ng-maxlength="50" ng-model="optionGroups.optionGroupName"
+											placeholder="Enter the Option Group Name"
+											class="form-control"> <span
+											class="help-block error"
+											ng-show="OptionGroupsForm.optionGroupName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OptionGroupsForm.optionGroupName.$error.maxlength">maximum
+											length is 50</span>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-error': OptionGroupsForm.optionGroupDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Option
+									Group Description</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="optionGroupDesc" name="optionGroupDesc" required
+											ng-maxlength="45" class="form-control"
+											ng-model="optionGroups.optionGroupDesc"
+											placeholder="Enter the Option Group Description">
+										<span class="help-block error"
+											ng-show="OptionGroupsForm.optionGroupDesc.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="OptionGroupsForm.optionGroupDesc.$error.maxlength">maximum
+											length is 45</span>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="optionGroups.optionGroupId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || OptionGroupsForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+

@@ -1,0 +1,121 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Price Rules</a></li>
+		<li class="active">Tax Rule</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Tax Rule
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="TaxRuleForm" name="TaxRuleForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/TaxRules/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Tax Rule</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Tax Rule</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+	
+		<div class="form-group"
+								ng-class="{'has-error': TaxRuleForm.tax.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Tax</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="tax" name="tax" class="form-control"
+											ng-model="taxSelection" ng-options="t.text for t in taxSelectionList">
+											<option value="">Choose a Tax</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+	
+		<div class="form-group"
+								ng-class="{'has-error': TaxRuleForm.taxRuleName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Tax Rule Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input 
+											id="taxRuleName" name="taxRuleName" type="text" ng-maxlength="45" 
+											ng-model="taxRule.taxRuleName" placeholder="Enter the Tax Rule Name" class="form-control"
+											> 
+										           <span class="help-block error" ng-show="TaxRuleForm.taxRuleName.$error.maxlength">maximum length is 45</span>
+									</div>
+								</div>
+							</div>	
+
+	
+			<div class="form-group"
+								ng-class="{'has-error': TaxRuleForm.stateCd.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">State Code</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input 
+											id="stateCd" name="stateCd" type="text" ng-maxlength="45"
+											ng-model="taxRule.stateCd" placeholder="Enter the TaxRule State Code" class="form-control"
+											> 
+										          <span class="help-block error" ng-show="TaxRuleForm.stateCd.$error.maxlength">maximum length is 45</span>
+									</div>
+								</div>
+							</div>	
+
+
+		<div class="form-group"
+								ng-class="{'has-error': TaxRuleForm.countryCd.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Country Code</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input 
+											id="countryCd" name="countryCd" type="text" ng-maxlength="45"
+											ng-model="taxRule.countryCd" placeholder="Enter the Tax Rule Country Cd" class="form-control"
+											> 
+										          <span class="help-block error" ng-show="TaxRuleForm.countryCd.$error.maxlength">maximum length is 45</span>
+									</div>
+								</div>
+							</div>	
+	
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="taxRule.taxRuleId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || TaxRuleForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

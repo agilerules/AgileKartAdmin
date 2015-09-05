@@ -1,0 +1,311 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Catalog</a></li>
+	<li><a href="#">Product</a></li>
+	<li class="active">Product Details</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Product Details
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Products</p>
+				</div>
+				<div class="panel-body">
+					<div class="row vertical-align">
+
+						<div class="col-md-8">
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<select id="merchant" name="merchant"
+										class="form-control select open" ng-model="search.merchant"
+										ng-options="m as m.merchantId for m in merchantList">
+										<option value="">Choose a Merchant</option>
+									</select>
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productName"
+										name="productName" ng-model="search.productName"
+										placeholder="Enter the Product Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productPrice"
+										name="productPrice" ng-model="search.productPrice"
+										placeholder="Enter the Product Price">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productWeight"
+										name="productWeight" ng-model="search.productWeight"
+										placeholder="Enter the Product Weight">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productCartDesc"
+										name="productCartDesc" ng-model="search.productCartDesc"
+										placeholder="Enter the Product Cart Description">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productShortDesc"
+										name="productShortDesc" ng-model="search.productShortDesc"
+										placeholder="Enter the Product Product Short Description">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productLongDesc"
+										name="productLongDesc" ng-model="search.productLongDesc"
+										placeholder="Enter the Product Long Description">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productStock"
+										name="productStock" ng-model="search.productStock"
+										placeholder="Enter the Product Stock">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"
+										id="productDiscountPercentage"
+										name="productDiscountPercentage"
+										ng-model="search.productDiscountPercentage"
+										placeholder="Enter the Product Discount Percentage">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<select id="productUnlimited" name="productUnlimited"
+										class="form-control select open"
+										ng-model="search.productUnlimited"
+										ng-options="p as p for p in productUnlimitedList">
+										<option value="">Choose whether product is unlimited</option>
+									</select>
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productHitCount"
+										name="productHitCount" ng-model="search.productHitCount"
+										placeholder="Enter the Product Hit Count">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="productSoldCount"
+										name="productSoldCount" ng-model="search.productSoldCount"
+										placeholder="Enter the Product Sold Count">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+						</div>
+						<div class="col-md-4">
+
+							<a type="button" ng-href="#/Products/new"
+								class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+								Add a new Product
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Merchant</th>
+							<th>Product Name</th>
+							<th>Product Price</th>
+							<th>Product Weight</th>
+							<th>Product Cart Desc</th>
+							<th>Product Short Desc</th>
+							<th>Product Long Desc</th>
+							<th>Product Stock</th>
+							<th>Product Discount Percentage</th>
+							<th>Product Unlimited</th>
+							<th>Last Update User Id</th>
+							<th>Last Update Ts</th>
+						</tr>
+					</thead>
+					<tbody id="search-results-body">
+						<tr
+							ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.merchant.merchantName}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productName}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productPrice}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productWeight}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productCartDesc}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productShortDesc}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productLongDesc}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productStock}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productDiscountPercentage}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.productUnlimited}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.lastUpdateUserId}}</a></td>
+							<td><a href="#/Products/edit/{{result.productId}}">{{result.lastUpdateTs|
+									date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+

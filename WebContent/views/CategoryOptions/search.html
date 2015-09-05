@@ -1,0 +1,124 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Catalog</a></li>
+	<li><a href="#">Category & Options</a></li>
+	<li class="active">Category Options</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Category Options
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Category options</p>
+				</div>
+				<div class="panel-body">
+					<div class="row vertical-align">
+
+						<div class="col-md-8">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" input id="categoryName"
+										name="categoryName" ng-model="search.categoryName"
+										placeholder="Enter the Category Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<select id="optionGroups" name="optionGroups"
+										class="form-control select open"
+										ng-model="search.optionGroups"
+										ng-options="o as o.optionGroupName for o in optionGroupsList">
+										<option value="">Choose a Option Group</option>
+									</select>
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+
+							<a type="button" ng-href="#/CategoryOptions/new"
+								class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+								Add new Category Option
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Category</th>
+							<th>Option Group</th>
+							<th>Last Update User</th>
+							<th>Last Update Timestamp</th>
+						</tr>
+					</thead>
+					<tbody id="search-results-body">
+						<tr
+							ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+							<td><a
+								href="#/CategoryOptions/edit/{{result.categoryOptionsId}}">{{result.category.categoryName}}</a></td>
+							<td><a
+								href="#/CategoryOptions/edit/{{result.categoryOptionsId}}">{{result.optionGroups.optionGroupName}}</a></td>
+							<td><a
+								href="#/CategoryOptions/edit/{{result.categoryOptionsId}}">{{result.lastUpdateUserId}}</a></td>
+							<td><a
+								href="#/CategoryOptions/edit/{{result.categoryOptionsId}}">{{result.lastUpdateTs|
+									date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>

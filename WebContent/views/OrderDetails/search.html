@@ -1,0 +1,130 @@
+<div class="form-horizontal">
+	<h3>Create a new OrderDetails</h3>
+	<div class="form-group">
+		<div class="col-md-offset-2 col-sm-2">
+			<a id="Create" name="Create" class="btn btn-primary"
+				href="#/OrderDetails/new"><span
+				class="glyphicon glyphicon-plus-sign"></span> Create</a>
+		</div>
+	</div>
+</div>
+<hr />
+<div>
+	<h3>Search for OrderDetails</h3>
+	<form id="OrderDetailsSearch" class="form-horizontal">
+
+		<div class="form-group">
+			<label for="orders" class="col-sm-2 control-label">Orders</label>
+			<div class="col-sm-10">
+				<select id="orders" name="orders" class="form-control"
+					ng-model="search.orders"
+					ng-options="o as o.orderId for o in ordersList">
+					<option value="">Choose a Orders</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="product" class="col-sm-2 control-label">Product</label>
+			<div class="col-sm-10">
+				<select id="product" name="product" class="form-control"
+					ng-model="search.product"
+					ng-options="p as p.productId for p in productList">
+					<option value="">Choose a Product</option>
+				</select>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="detailName" class="col-sm-2 control-label">Detail
+				Name</label>
+			<div class="col-sm-10">
+				<input id="detailName" name="detailName" class="form-control"
+					type="text" ng-model="search.detailName"
+					placeholder="Enter the OrderDetails Detail Name"></input>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="detailPrice" class="col-sm-2 control-label">Detail
+				Price</label>
+			<div class="col-sm-10">
+				<input id="detailPrice" name="detailPrice" class="form-control"
+					type="text" ng-model="search.detailPrice"
+					placeholder="Enter the OrderDetails Detail Price"></input>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="detailQuantity" class="col-sm-2 control-label">Detail
+				Quantity</label>
+			<div class="col-sm-10">
+				<input id="detailQuantity" name="detailQuantity"
+					class="form-control" type="text" ng-model="search.detailQuantity"
+					placeholder="Enter the OrderDetails Detail Quantity"></input>
+			</div>
+		</div>
+
+		<div class="form-group">
+			<label for="lastUpdateUserId" class="col-sm-2 control-label">Last
+				Update User Id</label>
+			<div class="col-sm-10">
+				<input id="lastUpdateUserId" name="lastUpdateUserId"
+					class="form-control" type="text" ng-model="search.lastUpdateUserId"
+					placeholder="Enter the OrderDetails Last Update User Id"></input>
+			</div>
+		</div>
+
+
+
+		<div class="form-group">
+			<div class="col-md-offset-2 col-sm-10">
+				<a id="Search" name="Search" class="btn btn-primary"
+					ng-click="performSearch()"><span
+					class="glyphicon glyphicon-search"></span> Search</a>
+			</div>
+		</div>
+	</form>
+</div>
+<div id="search-results">
+	<div class="table-responsive">
+		<table
+			class="table table-responsive table-bordered table-striped clearfix">
+			<thead>
+				<tr>
+					<th>Orders</th>
+					<th>Product</th>
+					<th>Detail Name</th>
+					<th>Detail Price</th>
+					<th>Detail Quantity</th>
+					<th>Last Update User Id</th>
+					<th>Last Update Ts</th>
+				</tr>
+			</thead>
+			<tbody id="search-results-body">
+				<tr
+					ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.orders.orderId}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.product.productId}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailName}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailPrice}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.detailQuantity}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.lastUpdateUserId}}</a></td>
+					<td><a href="#/OrderDetails/edit/{{result.detailId}}">{{result.lastUpdateTs|
+							date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+				</tr>
+			</tbody>
+		</table>
+	</div>
+
+	<ul class="pagination pagination-centered">
+		<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+			ng-click="previous()">«</a></li>
+		<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+			ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+		<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+			<a id="next" href ng-click="next()">»</a>
+		</li>
+	</ul>
+
+</div>

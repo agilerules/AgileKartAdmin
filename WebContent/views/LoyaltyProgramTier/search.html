@@ -1,0 +1,119 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Loyalty</a></li>
+	<li class="active">Loyalty Program Tier</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Loyalty Program Tier
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Loyalty Program Tier</p>
+				</div>
+				<div class="panel-body">
+					<div class="row vertical-align">
+
+						<div class="col-md-8">
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="tierName" name="tierName" ng-model="search.tierName" placeholder="Enter the Loyalty Program Tier">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+						<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="tierMinPoints" name="tierMinPoints" ng-model="search.tierMinPoints" placeholder="Enter the Loyalty Program Tier Min Points">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="tierMaxPoints" name="tierMaxPoints" ng-model="search.tierMaxPoints" placeholder="Enter the Loyalty Program Tier Max Points">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="col-md-4">
+
+							<a type="button" ng-href="#/LoyaltyProgramTiers/new"
+								class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+								Add a new Loyality Program Tier
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					 <thead>
+                <tr>
+                    <th>Tier Name</th>
+                    <th>Tier Min Points</th>
+                    <th>Tier Max Points</th>
+                    <th>Last Update User ID</th>
+                    <th>Last Update Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                    <td><a href="#/LoyaltyProgramTiers/edit/{{result.tierId}}">{{result.tierName}}</a></td>
+                    <td><a href="#/LoyaltyProgramTiers/edit/{{result.tierId}}">{{result.tierMinPoints}}</a></td>
+                    <td><a href="#/LoyaltyProgramTiers/edit/{{result.tierId}}">{{result.tierMaxPoints}}</a></td>
+                    <td><a href="#/LoyaltyProgramTiers/edit/{{result.tierId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/LoyaltyProgramTiers/edit/{{result.tierId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>

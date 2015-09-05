@@ -1,0 +1,117 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Merchant</a></li>
+		<li class="active">Merchant Review</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Merchant Review
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="MerchantReviewForm" name="MerchantReviewForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/MerchantReviews/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Merchant Review</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Merchant Review</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						
+						
+	<div class="form-group"
+								ng-class="{'has-error': MerchantReviewForm.merchant.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="merchant" name="merchant" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList" >
+											<option value="">Choose a Merchant</option>
+										</select>
+									</div>
+								</div>
+							</div>
+	
+		
+							<div class="form-group"
+								ng-class="{'has-error': MerchantReviewForm.users.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">User</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control"  id="users" name="users" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList">
+											<option value="">Choose an User</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+    
+	
+							<div class="form-group"
+								ng-class="{'has-error': MerchantReviewForm.merchantReview.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Review</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input
+											id="merchantReview" name="merchantReview" type="text" required ng-maxlength="150" class="form-control" ng-model="merchantReview.merchantReview" placeholder="Enter the Merchant Review"> 
+											<span class="help-block error" ng-show="MerchantReviewForm.merchantReview.$error.required">required</span> 
+            <span class="help-block error" ng-show="MerchantReviewForm.merchantReview.$error.maxlength">maximum length is 150</span>
+									</div>
+								</div>
+							</div>
+
+						
+						<div class="form-group"
+								ng-class="{'has-error': MerchantReviewForm.merchantRating.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant Rating</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input
+											id="merchantRating" name="merchantRating" type="number" class="form-control" ng-model="merchantReview.merchantRating" placeholder="Enter the Merchant Rating"> 
+											<span class="help-block error" ng-show="MerchantReviewForm.merchantRating.$error.number">not a number</span>
+									</div>
+								</div>
+							</div>						
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="merchantReview.merchantReviewId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || MerchantReviewForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

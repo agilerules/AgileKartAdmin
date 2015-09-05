@@ -1,0 +1,89 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Merchant</a></li>
+		<li class="active">Merchant Payment Gateway</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Merchant Payment Gateways
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="MerchantPaymentGatewayForm" name="MerchantPaymentGatewayForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/MerchantPaymentGateways/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Merchant Payment Gateway</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Merchant Payment Gateway</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						
+	
+		<div class="form-group"
+								ng-class="{'has-error': MerchantPaymentGatewayForm.merchant.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="merchant" name="merchant" class="form-control" ng-model="merchantSelection" ng-options="m.text for m in merchantSelectionList">
+											<option value="">Choose a Merchant</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+    
+<div class="form-group"
+								ng-class="{'has-error': MerchantPaymentGatewayForm.paymentGateway.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Payment Gateway</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="paymentGateway" name="paymentGateway" class="form-control" ng-model="paymentGatewaySelection" ng-options="p.text for p in paymentGatewaySelectionList">
+											<option value="">Choose a Payment Gateway</option>
+										</select>
+									</div>
+								</div>
+							</div>			
+							
+						</div>
+						<div class="panel-footer">
+	 				
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="merchantPaymentGateway.merchantPaymentGatewayId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || MerchantPaymentGatewayForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

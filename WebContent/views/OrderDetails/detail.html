@@ -1,0 +1,80 @@
+<header ng-switch on="$location.path().indexOf('/OrderDetails/new') > -1">
+    <h3 ng-switch-when="true">Create a new OrderDetails</h3>
+    <h3 ng-switch-when="false">View or edit OrderDetails</h3>
+</header>
+<form id="OrderDetailsForm" name="OrderDetailsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.orders.$invalid}">
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
+        <div id="ordersControls" class="col-sm-10">
+        <select id="orders" name="orders" class="form-control" ng-model="ordersSelection" ng-options="o.text for o in ordersSelectionList"  >
+            <option value="">Choose a Orders</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.product.$invalid}">
+        <label for="product" class="col-sm-2 control-label">Product</label>
+        <div id="productControls" class="col-sm-10">
+        <select id="product" name="product" class="form-control" ng-model="productSelection" ng-options="p.text for p in productSelectionList"  >
+            <option value="">Choose a Product</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.detailName.$invalid}">
+        <label for="detailName" class="col-sm-2 control-label">Detail Name</label>
+        <div id="detailNameControls" class="col-sm-10">
+            <input id="detailName" name="detailName" type="text" required ng-maxlength="250" class="form-control" ng-model="orderDetails.detailName" placeholder="Enter the OrderDetails Detail Name"></input>
+            <span class="help-block error" ng-show="OrderDetailsForm.detailName.$error.required">required</span> 
+            <span class="help-block error" ng-show="OrderDetailsForm.detailName.$error.maxlength">maximum length is 250</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.detailPrice.$invalid}">
+        <label for="detailPrice" class="col-sm-2 control-label">Detail Price</label>
+        <div id="detailPriceControls" class="col-sm-10">
+            <input id="detailPrice" name="detailPrice" type="number" required class="form-control" ng-model="orderDetails.detailPrice" placeholder="Enter the OrderDetails Detail Price"></input>
+            <span class="help-block error" ng-show="OrderDetailsForm.detailPrice.$error.required">required</span> 
+            <span class="help-block error" ng-show="OrderDetailsForm.detailPrice.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.detailQuantity.$invalid}">
+        <label for="detailQuantity" class="col-sm-2 control-label">Detail Quantity</label>
+        <div id="detailQuantityControls" class="col-sm-10">
+            <input id="detailQuantity" name="detailQuantity" type="number" required class="form-control" ng-model="orderDetails.detailQuantity" placeholder="Enter the OrderDetails Detail Quantity"></input>
+            <span class="help-block error" ng-show="OrderDetailsForm.detailQuantity.$error.required">required</span> 
+            <span class="help-block error" ng-show="OrderDetailsForm.detailQuantity.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="orderDetails.lastUpdateUserId" placeholder="Enter the OrderDetails Last Update User Id"></input>
+            <span class="help-block error" ng-show="OrderDetailsForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': OrderDetailsForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="orderDetails.lastUpdateTs" placeholder="Enter the OrderDetails Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="OrderDetailsForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="OrderDetailsForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveOrderDetails" name="saveOrderDetails" class="btn btn-primary" ng-disabled="isClean() || OrderDetailsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteOrderDetails" name="deleteOrderDetails" class="btn btn-danger" ng-show="orderDetails.detailId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

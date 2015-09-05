@@ -1,0 +1,180 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Events & Offers</a></li>
+	<li class="active">Offers</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Offer
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Offers</p>
+				</div>
+				<form class="form-horizontal">
+					<div class="panel-body">
+						<div class="row vertical-align">
+
+							<div class="col-md-8">
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<select id="merchant" name="merchant"
+											class="form-control select open" ng-model="search.merchant"
+											ng-options="m as m.merchantId for m in merchantList">
+											<option value="">Choose a Merchant</option>
+										</select>
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<select id="product" name="product"
+											class="form-control select open" ng-model="search.product"
+											ng-options="p as p.productId for p in productList">
+											<option value="">Choose a Product</option>
+										</select>
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" input id="offerName"
+											name="offerName" ng-model="search.offerName"
+											placeholder="Enter the Offer Name">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" input
+											id="offerDiscountPct" name="offerDiscountPct"
+											ng-model="search.offerDiscountPct"
+											placeholder="Enter the Offer Discount Percentage">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+								<div class="form-group">
+
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" input
+											id="offerMaxCount" name="offerMaxCount"
+											ng-model="search.offerMaxCount"
+											placeholder="Enter the Offer Max Count">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+								<a type="button" ng-href="#/Offers/new"
+									class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+									Add a new Offer
+								</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Merchant</th>
+							<th>Product</th>
+							<th>Offer Name</th>
+							<th>Offer Discount Pct</th>
+							<th>Offer Start Date</th>
+							<th>Offer End Date</th>
+							<th>Offer Max Count</th>
+							<th>Last Update User Id</th>
+							<th>Last Update Ts</th>
+						</tr>
+					</thead>
+					<tbody id="search-results-body">
+						<tr
+							ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.merchant.merchantName}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.product.productName}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerName}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerDiscountPct}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerStartDate|
+									date:'mediumDate'}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerEndDate|
+									date:'mediumDate'}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.offerMaxCount}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.lastUpdateUserId}}</a></td>
+							<td><a href="#/Offers/edit/{{result.offerId}}">{{result.lastUpdateTs|
+									date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+

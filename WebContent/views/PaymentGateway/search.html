@@ -1,0 +1,146 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Administration</a></li>
+	<li class="active">Payment Gateway</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Payment Gateway
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Payment Gateway</p>
+				</div>
+				<div class="panel-body">
+					<div class="row vertical-align">
+
+						<div class="col-md-8">
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" input
+										id="paymentGatewayName" name="paymentGatewayName"
+										ng-model="search.paymentGatewayName"
+										placeholder="Enter the Payment Gateway Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" input
+										id="paymentGatewayDesc" name="paymentGatewayDesc"
+										ng-model="search.paymentGatewayDesc"
+										placeholder="Enter the Payment Gateway Description">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+
+
+						</div>
+						<div class="col-md-4">
+
+							<a type="button" ng-href="#/PaymentGateways/new"
+								class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+								Add new Payment Gateway
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Payment Gateway Name</th>
+							<th>Payment Gateway Desc</th>
+							<th>Last Update User Id</th>
+							<th>Last Update Ts</th>
+						</tr>
+					</thead>
+					<tbody id="search-results-body">
+						<tr
+							ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+							<td><a
+								href="#/PaymentGateways/edit/{{result.paymentGatewayId}}">{{result.paymentGatewayName}}</a></td>
+							<td><a
+								href="#/PaymentGateways/edit/{{result.paymentGatewayId}}">{{result.paymentGatewayDesc}}</a></td>
+							<td><a
+								href="#/PaymentGateways/edit/{{result.paymentGatewayId}}">{{result.lastUpdateUserId}}</a></td>
+							<td><a
+								href="#/PaymentGateways/edit/{{result.paymentGatewayId}}">{{result.lastUpdateTs|
+									date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+

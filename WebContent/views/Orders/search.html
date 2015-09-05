@@ -1,0 +1,300 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Orders</a></li>
+	<li class="active">Order Details</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Order Details
+	</h2>
+</div>
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Orders</p>
+				</div>
+				<form class="form-horizontal">
+					<div class="panel-body">
+						<div class="row vertical-align">
+							<div class="col-md-8">
+
+
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderShipName"
+											name="orderShipName" ng-model="search.orderShipName"
+											placeholder="Enter the Order Ship Name">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderShipAddress"
+											name="orderShipAddress" ng-model="search.orderShipAddress"
+											placeholder="Enter the Order Ship Address">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderShipAddress2"
+											name="orderShipAddress2" ng-model="search.orderShipAddress2"
+											placeholder="Enter the Order Ship Address 2">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderCity"
+											name="orderCity" ng-model="search.orderCity"
+											placeholder="Enter the Order City">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderState"
+											name="orderState" ng-model="search.orderState"
+											placeholder="Enter the Order State">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderZip"
+											name="orderZip" ng-model="search.orderZip"
+											placeholder="Enter the Order Zip">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderCountry"
+											name="orderCountry" ng-model="search.orderCountry"
+											placeholder="Enter the Order Country">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderPhone"
+											name="orderPhone" ng-model="search.orderPhone"
+											placeholder="Enter the Order Phone">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderFax"
+											name="orderFax" ng-model="search.orderFax"
+											placeholder="Enter the Order Fax">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderShipping"
+											name="orderShipping" ng-model="search.orderShipping"
+											placeholder="Enter the Order Shipping">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderTax"
+											name="orderTax" ng-model="search.orderTax"
+											placeholder="Enter the Order Tax">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderEmail"
+											name="orderEmail" ng-model="search.orderEmail"
+											placeholder="Enter the Order Email">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+
+								<div class="form-group">
+									<div class="input-group">
+										<div class="input-group-addon">
+											<span class="fa fa-search"></span>
+										</div>
+										<input type="text" class="form-control" id="orderShipped"
+											name="orderShipped" ng-model="search.orderShipped"
+											placeholder="Enter the Order Shipped">
+										<div class="input-group-btn">
+											<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+										</div>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-4">
+
+								<a type="button" ng-href="#/Orders/new"
+									class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+									Add a new Order
+								</a>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+						<tr>
+							<th>Order Type</th>
+							<th>Order Ship Name</th>
+							<th>Order Ship Address</th>
+							<th>Order Ship Address 2</th>
+							<th>Order City</th>
+							<th>Order State</th>
+							<th>Order Zip</th>
+							<th>Order Country</th>
+							<th>Order Phone</th>
+							<th>Order Fax</th>
+							<th>Order Shipping</th>
+							<th>Order Tax</th>
+							<th>Order Email</th>
+							<th>Order Tracking No</th>
+							<th>Order Amount</th>
+							<th>Order Shipped</th>
+						</tr>
+					</thead>
+					<tbody id="search-results-body">
+						<tr
+							ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderType}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderShipName}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderShipAddress}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderShipAddress2}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderCity}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderState}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderZip}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderCountry}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderPhone}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderFax}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderShipping}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderTax}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderEmail}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderTrackingNo}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderAmount}}</a></td>
+							<td><a href="#/Orders/edit/{{result.orderId}}">{{result.orderShipped}}</a></td>
+						</tr>
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+
+</div>

@@ -1,0 +1,99 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Loyalty</a></li>
+		<li class="active">Loyalty Event</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Loyalty Event
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal"id="LoyaltyEventDetailsForm" name="LoyaltyEventDetailsForm" >
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/LoyaltyEventDetails/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Loyalty Event</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Loyalty Event</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						<div class="form-group"
+								ng-class="{'has-error': LoyaltyEventDetailsForm.event.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Event</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="event" name="event" ng-model="eventSelection" ng-options="e.text for e in eventSelectionList" >
+											<option value="">Choose an Event</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						
+							<div class="form-group"
+								ng-class="{'has-error': LoyaltyEventDetailsForm.loyaltyProgramTier.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Program Tier</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="loyaltyProgramTier" name="loyaltyProgramTier" ng-model="loyaltyProgramTierSelection" ng-options="l.text for l in loyaltyProgramTierSelectionList" >
+											<option value="">Choose a Program Tier</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group"
+								ng-class="{'has-error': LoyaltyEventDetailsForm.pointsEarned.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Points Earned</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="number"
+											class="form-control" id="pointsEarned" name="pointsEarned" ng-model="loyaltyEventDetails.pointsEarned" placeholder="Enter the Loyalty Event Points Earned">
+											<span class="help-block error" ng-show="LoyaltyEventDetailsForm.pointsEarned.$error.number">not a number</span>
+									</div>
+								</div>
+							</div>
+							
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								 ng-show="loyaltyEventDetails.loyaltyEventDetailsId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || LoyaltyEventDetailsForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+

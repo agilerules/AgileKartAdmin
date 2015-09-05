@@ -1,0 +1,261 @@
+<ul class="breadcrumb">
+	<li><a href="#">Home</a></li>
+	<li><a href="#">Catalog</a></li>
+	<li><a href="#">Merchant</a></li>
+	<li class="active">Merchant Address</li>
+</ul>
+<!-- END BREADCRUMB -->
+<div class="page-title">
+	<h2>
+		<span class="fa fa-users"></span> Merchant Address
+	</h2>
+</div>
+
+
+
+<!-- PAGE CONTENT WRAPPER -->
+<div class="page-content-wrap">
+	<div class="row">
+		<div class="col-md-12">
+			<div class="panel panel-default">
+				<div class="panel-body">
+					<p>Use search to find Merchant address</p>
+				</div>
+				<div class="panel-body">
+					<div class="row vertical-align">
+
+						<div class="col-md-8">
+						<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<select class="form-control select open"  id="merchant" name="merchant"  ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+										<option value="">Choose a Merchant</option>
+									</select>
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+								
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="merchantAddress" name="merchantAddress" ng-model="search.merchantAddress" placeholder="Enter the Merchant Address">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"  id="merchantAddress2" name="merchantAddress2" ng-model="search.merchantAddress2" placeholder="Enter the Merchant Address 2">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="merchantCity" name="merchantCity"  ng-model="search.merchantCity" placeholder="Enter the Merchant City">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"  id="merchantCountry" name="merchantCountry" ng-model="search.merchantCountry" placeholder="Enter the Merchant Country">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+							
+							<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"  id="merchantFax" name="merchantFax" ng-model="search.merchantFax" placeholder="Enter the Merchant Fax">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>
+							
+							 <div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"  id="merchantFirstName" name="merchantFirstName" ng-model="search.merchantFirstName" placeholder="Enter the Merchant First Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+  
+  <div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"  id="merchantLastName" name="merchantLastName" ng-model="search.merchantLastName" placeholder="Enter the Merchant Last Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+								
+							  <div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"   id="merchantPhone" name="merchantPhone" ng-model="search.merchantPhone" placeholder="Enter the Merchant Phone">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+							
+							   <div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control"   id="merchantState" name="merchantState" ng-model="search.merchantState" placeholder="Enter the Merchant State">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="addressTypeName" name="addressTypeName" ng-model="search.addressTypeName" placeholder="Enter the Address Type Name">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+    
+	<div class="form-group">
+								<div class="input-group">
+									<div class="input-group-addon">
+										<span class="fa fa-search"></span>
+									</div>
+									<input type="text" class="form-control" id="merchantZip" name="merchantZip" ng-model="search.merchantZip" placeholder="Enter the Merchant Zip">
+									<div class="input-group-btn">
+										<button class="btn btn-primary" ng-click="performSearch()">Search</button>
+									</div>
+								</div>
+							</div>	
+  
+
+							 
+							 
+							 
+							 
+								
+								
+							
+						</div>
+						<div class="col-md-4">
+
+							<a type="button" ng-href="#/MerchantAddresses/new"
+								class="btn btn-success btn-block"> <span class="fa fa-plus"></span>
+								Add a new Merchant Address
+							</a>
+
+						</div>
+
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+<div class="row">
+	<div class="col-md-12">
+		<div class="panel panel-default">
+			<div class="panel-body">
+				<table class="table table-hover">
+					<thead>
+                <tr>
+                    <th>Merchant Name</th>
+                    <th>Merchant Address</th>
+                    <th>Merchant Address 2</th>
+                    <th>Merchant City</th>
+                    <th>Merchant Country</th>
+                    <th>Merchant Fax</th>
+                    <th>Merchant First Name</th>
+                    <th>Merchant Last Name</th>
+                    <th>Merchant Phone</th>
+                    <th>Merchant State</th>
+                    <th>Address Type Name</th>
+                    <th>Merchant Zip</th>
+                    <th>Last Update User ID</th>
+                    <th>Last Update Time Stamp</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchant.merchantName}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantAddress}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantAddress2}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantCity}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantCountry}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantFax}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantFirstName}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantLastName}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantPhone}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantState}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.addressTypeName}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.merchantZip}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/MerchantAddresses/edit/{{result.merchantAddressId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+<div class="row">
+	<div class="col-md-12">
+		<ul class="pagination pagination-centered">
+			<li ng-class="{disabled:currentPage == 0}"><a id="prev" href
+				ng-click="previous()">«</a></li>
+			<li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}"
+				ng-click="setPage(n)"><a href ng-bind="n + 1">1</a></li>
+			<li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+				<a id="next" href ng-click="next()">»</a>
+			</li>
+		</ul>
+
+	</div>
+</div>
+</div>

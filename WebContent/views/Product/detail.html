@@ -1,0 +1,311 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Product</a></li>
+		<li class="active">Product Details</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Product Details
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="ProductForm" name="ProductForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Products/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Product</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Product</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+
+
+
+							<div class="form-group"
+								ng-class="{'has-error': FeatureOptionsForm.features.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Merchant</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="merchant" name="merchant"
+											ng-model="merchantSelection"
+											ng-options="m.text for m in merchantSelectionList">
+											<option value="">Choose a Merchant</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productName.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productName" name="productName" type="text" required
+											ng-maxlength="100" class="form-control"
+											ng-model="product.productName"
+											placeholder="Enter the Product Name"> <span
+											class="help-block error"
+											ng-show="ProductForm.productName.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productName.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productPrice.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Price</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="productPrice"
+											name="productPrice" type="number" required
+											class="form-control" ng-model="product.productPrice"
+											placeholder="Enter the Product Price"> <span
+											class="help-block error"
+											ng-show="ProductForm.productPrice.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productPrice.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productWeight.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Weight</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="productWeight"
+											name="productWeight" type="number" required
+											class="form-control" ng-model="product.productWeight"
+											placeholder="Enter the Product Weight"> <span
+											class="help-block error"
+											ng-show="ProductForm.productWeight.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productWeight.$error.number">not
+											a number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productCartDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Cart Description</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productCartDesc" name="productCartDesc" type="text"
+											required ng-maxlength="250" class="form-control"
+											ng-model="product.productCartDesc"
+											placeholder="Enter the Product Cart Description"> <span
+											class="help-block error"
+											ng-show="ProductForm.productCartDesc.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productCartDesc.$error.maxlength">maximum
+											length is 250</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productShortDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Short Description</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productShortDesc" name="productShortDesc" type="text"
+											required ng-maxlength="1000" class="form-control"
+											ng-model="product.productShortDesc"
+											placeholder="Enter the  Product Short Description"> <span
+											class="help-block error"
+											ng-show="ProductForm.productShortDesc.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productShortDesc.$error.maxlength">maximum
+											length is 1000</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productLongDesc.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Long Description</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productLongDesc" name="productLongDesc" type="text"
+											required ng-maxlength="4000" class="form-control"
+											ng-model="product.productLongDesc"
+											placeholder="Enter the Product Long Description"> <span
+											class="help-block error"
+											ng-show="ProductForm.productLongDesc.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productLongDesc.$error.maxlength">maximum
+											length is 4000</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productThumb.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Thumb Location</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productThumb" name="productThumb" type="text" required
+											ng-maxlength="100" class="form-control"
+											ng-model="product.productThumb"
+											placeholder="Enter the Product Thumb Location"> <span
+											class="help-block error"
+											ng-show="ProductForm.productThumb.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productThumb.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productImage.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Image Location</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input type="text"
+											id="productImage" name="productImage" type="text" required
+											ng-maxlength="100" class="form-control"
+											ng-model="product.productImage"
+											placeholder="Enter the Product Image"> <span
+											class="help-block error"
+											ng-show="ProductForm.productImage.$error.required">required</span>
+										<span class="help-block error"
+											ng-show="ProductForm.productImage.$error.maxlength">maximum
+											length is 100</span>
+									</div>
+								</div>
+							</div>
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productStock.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									In Stock</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input id="productStock"
+											name="productStock" type="number" class="form-control"
+											ng-model="product.productStock"
+											placeholder="Enter whether the Product is in Stock">
+										<span class="help-block error"
+											ng-show="ProductForm.productStock.$error.number">not a
+											number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productStock.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									In Stock</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input
+											id="productDiscountPercentage"
+											name="productDiscountPercentage" type="number"
+											class="form-control"
+											ng-model="product.productDiscountPercentage"
+											placeholder="Enter the Product Discount Percentage">
+										<span class="help-block error"
+											ng-show="ProductForm.productDiscountPercentage.$error.number">not
+											a number</span>
+									</div>
+								</div>
+							</div>
+
+
+							<div class="form-group"
+								ng-class="{'has-error': ProductForm.productUnlimited.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Product
+									Unlimited</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											class="form-control" id="productUnlimited"
+											name="productUnlimited" ng-model="product.productUnlimited"
+											ng-options="p for p in productUnlimitedList">
+											<option value="">Choose whether Product is Unlimited</option>
+										</select>
+									</div>
+								</div>
+							</div>
+
+
+
+
+
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default" ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="product.productId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || ProductForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>

@@ -1,0 +1,160 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Price Rules</a></li>
+		<li class="active">Tax</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Tax
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal"  id="TaxForm" name="TaxForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/Taxes/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Tax</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Tax</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+						
+						
+		
+	<div class="form-group"
+								ng-class="{'has-error': TaxForm.taxRate.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Tax Rate</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input 
+											id="taxRate" name="taxRate" type="number"  ng-model="tax.taxRate" placeholder="Enter the Tax Rate" class="form-control"> 
+          <span class="help-block error" ng-show="TaxForm.taxRate.$error.number">not a number</span>
+									</div>
+								</div>
+							</div>
+
+
+	<div class="form-group"
+								ng-class="{'has-error': TaxForm.taxIsActive.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Tax Is Active</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="fa fa-pencil"></span></span> <input 
+											id="taxIsActive" name="taxIsActive" type="text"  ng-model="tax.taxIsActive" placeholder="Enter the Tax Is Active" class="form-control"> 
+         							</div>
+								</div>
+							</div>	
+						
+	
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="tax.taxId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								 ng-disabled="isClean() || TaxForm.$invalid" ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<header ng-switch on="$location.path().indexOf('/Taxes/new') > -1">
+    <h3 ng-switch-when="true">Create a new Tax</h3>
+    <h3 ng-switch-when="false">View or edit Tax</h3>
+</header>
+<form id="TaxForm" name="TaxForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': TaxForm.taxRate.$invalid}">
+        <label for="taxRate" class="col-sm-2 control-label">Tax Rate</label>
+        <div id="taxRateControls" class="col-sm-10">
+            <input id="taxRate" name="taxRate" type="number" class="form-control" ng-model="tax.taxRate" placeholder="Enter the Tax Tax Rate"></input>
+            <span class="help-block error" ng-show="TaxForm.taxRate.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TaxForm.taxIsActive.$invalid}">
+        <label for="taxIsActive" class="col-sm-2 control-label">Tax Is Active</label>
+        <div id="taxIsActiveControls" class="col-sm-10">
+            <input id="taxIsActive" name="taxIsActive" type="text" class="form-control" ng-model="tax.taxIsActive" placeholder="Enter the Tax Tax Is Active"></input>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TaxForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="tax.lastUpdateUserId" placeholder="Enter the Tax Last Update User Id"></input>
+            <span class="help-block error" ng-show="TaxForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TaxForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="tax.lastUpdateTs" placeholder="Enter the Tax Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="TaxForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="TaxForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': TaxForm.taxRules.$invalid}">
+        <label for="taxRules" class="col-sm-2 control-label">Tax Rules</label>
+        <div id="taxRulesControls" class="col-sm-10">
+            <select id="taxRules" name="taxRules" multiple class="form-control" ng-model="taxRulesSelection" ng-options="t.text for t in taxRulesSelectionList">
+                <option value="">Choose a Tax Rules</option>
+            </select>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveTax" name="saveTax" class="btn btn-primary" ng-disabled="isClean() || TaxForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteTax" name="deleteTax" class="btn btn-danger" ng-show="tax.taxId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

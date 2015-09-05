@@ -1,0 +1,131 @@
+<div class="form-horizontal">
+    <h3>Create a new LoyaltyProgramMerchant</h3>
+    <div class="form-group">
+        <div class="col-md-offset-2 col-sm-2">
+            <a id="Create" name="Create" class="btn btn-primary" href="#/LoyaltyProgramMerchants/new"><span class="glyphicon glyphicon-plus-sign"></span> Create</a>
+        </div>
+    </div>
+</div>
+<hr/>
+<div>
+    <h3>Search for LoyaltyProgramMerchants</h3>
+    <form id="LoyaltyProgramMerchantSearch" class="form-horizontal">
+        
+    <div class="form-group">
+        <label for="merchant" class="col-sm-2 control-label">Merchant</label>
+        <div class="col-sm-10">
+            <select id="merchant" name="merchant" class="form-control" ng-model="search.merchant" ng-options="m as m.merchantId for m in merchantList">
+                <option value="">Choose a Merchant</option>
+            </select>
+        </div>
+    </div>
+
+
+
+    <div class="form-group">
+        <label for="programParticipateFlag" class="col-sm-2 control-label">Program Participate Flag</label>
+        <div class="col-sm-10">
+            <input id="programParticipateFlag" name="programParticipateFlag" class="form-control" type="text" ng-model="search.programParticipateFlag" placeholder="Enter the LoyaltyProgramMerchant Program Participate Flag"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="amountSpent" class="col-sm-2 control-label">Amount Spent</label>
+        <div class="col-sm-10">
+            <input id="amountSpent" name="amountSpent" class="form-control" type="text" ng-model="search.amountSpent" placeholder="Enter the LoyaltyProgramMerchant Amount Spent"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pointsEarned" class="col-sm-2 control-label">Points Earned</label>
+        <div class="col-sm-10">
+            <input id="pointsEarned" name="pointsEarned" class="form-control" type="text" ng-model="search.pointsEarned" placeholder="Enter the LoyaltyProgramMerchant Points Earned"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="pointsRedeemed" class="col-sm-2 control-label">Points Redeemed</label>
+        <div class="col-sm-10">
+            <input id="pointsRedeemed" name="pointsRedeemed" class="form-control" type="text" ng-model="search.pointsRedeemed" placeholder="Enter the LoyaltyProgramMerchant Points Redeemed"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="amountRedeemed" class="col-sm-2 control-label">Amount Redeemed</label>
+        <div class="col-sm-10">
+            <input id="amountRedeemed" name="amountRedeemed" class="form-control" type="text" ng-model="search.amountRedeemed" placeholder="Enter the LoyaltyProgramMerchant Amount Redeemed"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="minAmountSpent" class="col-sm-2 control-label">Min Amount Spent</label>
+        <div class="col-sm-10">
+            <input id="minAmountSpent" name="minAmountSpent" class="form-control" type="text" ng-model="search.minAmountSpent" placeholder="Enter the LoyaltyProgramMerchant Min Amount Spent"></input>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" class="form-control" type="text" ng-model="search.lastUpdateUserId" placeholder="Enter the LoyaltyProgramMerchant Last Update User Id"></input>
+        </div>
+    </div>
+
+
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-sm-10">
+                <a id="Search" name="Search" class="btn btn-primary" ng-click="performSearch()"><span class="glyphicon glyphicon-search"></span> Search</a>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="search-results">
+        <div class="table-responsive">
+        <table class="table table-responsive table-bordered table-striped clearfix">
+            <thead>
+                <tr>
+                    <th>Merchant</th>
+                    <th>Start Date</th>
+                    <th>End Date</th>
+                    <th>Program Participate Flag</th>
+                    <th>Amount Spent</th>
+                    <th>Points Earned</th>
+                    <th>Points Redeemed</th>
+                    <th>Amount Redeemed</th>
+                    <th>Min Amount Spent</th>
+                    <th>Last Update User Id</th>
+                    <th>Last Update Ts</th>
+                </tr>
+            </thead>
+            <tbody id="search-results-body">
+                <tr ng-repeat="result in searchResults | searchFilter:searchResults | startFrom:currentPage*pageSize | limitTo:pageSize">
+                        <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.merchant.merchantId}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.startDate| date:'mediumDate'}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.endDate| date:'mediumDate'}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.programParticipateFlag}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.amountSpent}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.pointsEarned}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.pointsRedeemed}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.amountRedeemed}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.minAmountSpent}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.lastUpdateUserId}}</a></td>
+                    <td><a href="#/LoyaltyProgramMerchants/edit/{{result.loyaltyProgramMerchantId}}">{{result.lastUpdateTs| date:'yyyy-MM-dd HH:mm:ss Z'}}</a></td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+        <ul class="pagination pagination-centered">
+        <li ng-class="{disabled:currentPage == 0}">
+            <a id="prev" href ng-click="previous()">«</a>
+        </li>
+        <li ng-repeat="n in pageRange" ng-class="{active:currentPage == n}" ng-click="setPage(n)">
+            <a href ng-bind="n + 1">1</a>
+        </li>
+        <li ng-class="{disabled: currentPage == (numberOfPages() - 1)}">
+            <a id="next" href ng-click="next()">»</a>
+        </li>
+    </ul>
+
+</div>

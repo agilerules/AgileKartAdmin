@@ -1,0 +1,121 @@
+<header ng-switch on="$location.path().indexOf('/UserRewards/new') > -1">
+    <h3 ng-switch-when="true">Create a new UserRewards</h3>
+    <h3 ng-switch-when="false">View or edit UserRewards</h3>
+</header>
+<form id="UserRewardsForm" name="UserRewardsForm" class="form-horizontal" role="form">
+    <div ng-show="displayError" class="alert alert-danger">
+        <strong>Error!</strong> Something broke. Retry, or cancel and start afresh.
+    </div>
+    
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.loyaltyProgramTier.$invalid}">
+        <label for="loyaltyProgramTier" class="col-sm-2 control-label">Loyalty Program Tier</label>
+        <div id="loyaltyProgramTierControls" class="col-sm-10">
+        <select id="loyaltyProgramTier" name="loyaltyProgramTier" class="form-control" ng-model="loyaltyProgramTierSelection" ng-options="l.text for l in loyaltyProgramTierSelectionList"  >
+            <option value="">Choose a Loyalty Program Tier</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.orders.$invalid}">
+        <label for="orders" class="col-sm-2 control-label">Orders</label>
+        <div id="ordersControls" class="col-sm-10">
+        <select id="orders" name="orders" class="form-control" ng-model="ordersSelection" ng-options="o.text for o in ordersSelectionList"  >
+            <option value="">Choose a Orders</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.users.$invalid}">
+        <label for="users" class="col-sm-2 control-label">Users</label>
+        <div id="usersControls" class="col-sm-10">
+        <select id="users" name="users" class="form-control" ng-model="usersSelection" ng-options="u.text for u in usersSelectionList"  >
+            <option value="">Choose a Users</option>
+        </select>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.pointsEarned.$invalid}">
+        <label for="pointsEarned" class="col-sm-2 control-label">Points Earned</label>
+        <div id="pointsEarnedControls" class="col-sm-10">
+            <input id="pointsEarned" name="pointsEarned" type="number" class="form-control" ng-model="userRewards.pointsEarned" placeholder="Enter the UserRewards Points Earned"></input>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsEarned.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.pointsRedeemed.$invalid}">
+        <label for="pointsRedeemed" class="col-sm-2 control-label">Points Redeemed</label>
+        <div id="pointsRedeemedControls" class="col-sm-10">
+            <input id="pointsRedeemed" name="pointsRedeemed" type="number" class="form-control" ng-model="userRewards.pointsRedeemed" placeholder="Enter the UserRewards Points Redeemed"></input>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsRedeemed.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.expiryDate.$invalid}">
+        <label for="expiryDate" class="col-sm-2 control-label">Expiry Date</label>
+        <div id="expiryDateControls" class="col-sm-10">
+            <date id="expiryDate" name="expiryDate" ng-model="userRewards.expiryDate" placeholder="Enter the UserRewards Expiry Date"></date>
+            <span class="help-block error" ng-show="UserRewardsForm.expiryDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="UserRewardsForm.expiryDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.pointsEarnedDate.$invalid}">
+        <label for="pointsEarnedDate" class="col-sm-2 control-label">Points Earned Date</label>
+        <div id="pointsEarnedDateControls" class="col-sm-10">
+            <date id="pointsEarnedDate" name="pointsEarnedDate" ng-model="userRewards.pointsEarnedDate" placeholder="Enter the UserRewards Points Earned Date"></date>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsEarnedDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsEarnedDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.pointsRedeeemedDate.$invalid}">
+        <label for="pointsRedeeemedDate" class="col-sm-2 control-label">Points Redeeemed Date</label>
+        <div id="pointsRedeeemedDateControls" class="col-sm-10">
+            <date id="pointsRedeeemedDate" name="pointsRedeeemedDate" ng-model="userRewards.pointsRedeeemedDate" placeholder="Enter the UserRewards Points Redeeemed Date"></date>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsRedeeemedDate.$error.maxlength">maximum length is 10</span>
+            <span class="help-block error" ng-show="UserRewardsForm.pointsRedeeemedDate.$error.dateFormat">does not match format "yyyy-MM-dd" (e.g. 2013-12-01)</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.totalPointsEarned.$invalid}">
+        <label for="totalPointsEarned" class="col-sm-2 control-label">Total Points Earned</label>
+        <div id="totalPointsEarnedControls" class="col-sm-10">
+            <input id="totalPointsEarned" name="totalPointsEarned" type="number" class="form-control" ng-model="userRewards.totalPointsEarned" placeholder="Enter the UserRewards Total Points Earned"></input>
+            <span class="help-block error" ng-show="UserRewardsForm.totalPointsEarned.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.totalPointsRedeemed.$invalid}">
+        <label for="totalPointsRedeemed" class="col-sm-2 control-label">Total Points Redeemed</label>
+        <div id="totalPointsRedeemedControls" class="col-sm-10">
+            <input id="totalPointsRedeemed" name="totalPointsRedeemed" type="number" class="form-control" ng-model="userRewards.totalPointsRedeemed" placeholder="Enter the UserRewards Total Points Redeemed"></input>
+            <span class="help-block error" ng-show="UserRewardsForm.totalPointsRedeemed.$error.number">not a number</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.lastUpdateUserId.$invalid}">
+        <label for="lastUpdateUserId" class="col-sm-2 control-label">Last Update User Id</label>
+        <div id="lastUpdateUserIdControls" class="col-sm-10">
+            <input id="lastUpdateUserId" name="lastUpdateUserId" type="text" ng-maxlength="45" class="form-control" ng-model="userRewards.lastUpdateUserId" placeholder="Enter the UserRewards Last Update User Id"></input>
+            <span class="help-block error" ng-show="UserRewardsForm.lastUpdateUserId.$error.maxlength">maximum length is 45</span>
+        </div>
+    </div>
+
+    <div class="form-group" ng-class="{'has-error': UserRewardsForm.lastUpdateTs.$invalid}">
+        <label for="lastUpdateTs" class="col-sm-2 control-label">Last Update Ts</label>
+        <div id="lastUpdateTsControls" class="col-sm-10">
+            <datetime id="lastUpdateTs" name="lastUpdateTs" ng-model="userRewards.lastUpdateTs" placeholder="Enter the UserRewards Last Update Ts"></datetime>
+            <span class="help-block error" ng-show="UserRewardsForm.lastUpdateTs.$error.maxlength">maximum length is 19</span>
+            <span class="help-block error" ng-show="UserRewardsForm.lastUpdateTs.$error.datetimeFormat">does not match format "yyyy-MM-dd hh:mm:ss" (e.g. 2013-12-01 22:00:00)</span>
+        </div>
+    </div>
+
+
+    <div class="form-group">
+        <div class="col-sm-offset-2 col-sm-10">
+            <button id="saveUserRewards" name="saveUserRewards" class="btn btn-primary" ng-disabled="isClean() || UserRewardsForm.$invalid" ng-click="save()"><span class="glyphicon glyphicon-ok-sign"></span> Save</button>
+            <button id="cancel" name="cancel" class="btn btn-default" ng-click="cancel()"><span class="glyphicon glyphicon-remove-sign"></span> Cancel</button>
+            <button id="deleteUserRewards" name="deleteUserRewards" class="btn btn-danger" ng-show="userRewards.rewardId" ng-click="remove()"><span class="glyphicon glyphicon-trash"></span> Delete</button>
+        </div>
+    </div>
+</form>

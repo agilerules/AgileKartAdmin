@@ -1,0 +1,92 @@
+<div>
+	<ul class="breadcrumb">
+		<li><a href="#">Home</a></li>
+		<li><a href="#">Catalog</a></li>
+		<li><a href="#">Category & Options</a></li>
+		<li class="active">Category Options</li>
+	</ul>
+	<!-- END BREADCRUMB -->
+	<div class="page-title ng-scope">
+		<h2>
+			<span class="fa fa-users"></span> Category Options
+		</h2>
+	</div>
+	<div class="page-content-wrap">
+		<div class="row">
+			<div class="col-md-12">
+
+				<form class="form-horizontal" id="CategoryOptionsForm"
+					name="CategoryOptionsForm">
+					<div ng-show="displayError" class="alert alert-danger">
+						<strong>Error!</strong> Something broke. Retry, or cancel and
+						start afresh.
+					</div>
+					<div class="panel panel-default">
+						<div class="panel-heading ui-draggable-handle">
+							<header ng-switch
+								on="$location.path().indexOf('/CategoryOptions/new') > -1">
+								<h3 class="panel-title" ng-switch-when="true">
+									<strong>Create a new Category Option</strong>
+								</h3>
+								<h3 class="panel-title" ng-switch-when="false">
+									<strong ng-switch-when="false">View or edit Category
+										Option</strong>
+								</h3>
+							</header>
+						</div>
+						<div class="panel-body">
+							<p></p>
+						</div>
+						<div class="panel-body">
+							<div class="form-group"
+								ng-class="{'has-error': CategoryOptionsForm.category.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Category
+									Name</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group ">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="category" name="category" class="form-control"
+											ng-model="categorySelection"
+											ng-options="c.text for c in categorySelectionList">
+											<option value="">Choose a Category</option>
+										</select>
+									</div>
+								</div>
+							</div>
+							<div class="form-group"
+								ng-class="{'has-error': CategoryOptionsForm.optionGroups.$invalid}">
+								<label class="col-md-3 col-xs-12 control-label">Option
+									Group</label>
+								<div class="col-md-6 col-xs-12">
+									<div class="input-group">
+										<span class="input-group-addon"><span
+											class="glyphicon glyphicon-list"></span></span> <select
+											id="optionGroups" name="optionGroups" class="form-control"
+											ng-model="optionGroupsSelection"
+											ng-options="o.text for o in optionGroupsSelectionList">
+											<option value="">Choose a Option Groups</option>
+										</select>
+									</div>
+								</div>
+							</div>
+						</div>
+						<div class="panel-footer">
+							<button class="btn btn-default"  ng-click="cancel()">Cancel</button>
+							<button class="btn btn-danger pull-center"
+								ng-show="categoryOptions.categoryOptionsId" ng-click="remove()">
+								<span class="fa fa-remove"></span> DELETE
+							</button>
+							<button class="btn btn-success pull-right"
+								ng-disabled="isClean() || CategoryOptionsForm.$invalid"
+								ng-click="save()">
+								<span class="fa fa-save"></span> SUBMIT
+							</button>
+						</div>
+					</div>
+				</form>
+
+			</div>
+		</div>
+	</div>
+</div>
